@@ -1,11 +1,11 @@
-﻿using App.LM.Dominio.Models;
+﻿using MiApp.LM.Dominio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.LM.Dominio.Abstracciones
+namespace MiApp.LM.Dominio.Abstracciones
 {
     public interface IProyectosRepository
     {

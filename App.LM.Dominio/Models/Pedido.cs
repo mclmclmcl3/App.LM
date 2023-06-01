@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.LM.Dominio.Models
+namespace MiApp.LM.Dominio.Models
 {
     public class Pedido
     {
