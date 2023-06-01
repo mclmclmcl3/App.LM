@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Recourses\Controles\" />
+    <Folder Include="Recourses\Imagenes\" />
   </ItemGroup>
 
   <ItemGroup>
