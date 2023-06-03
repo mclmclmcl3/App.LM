@@ -1,4 +1,6 @@
-﻿using MiApp.LM.Presentacion.Wpf.ViewModels;
+﻿using MiApp.LM.Presentacion.Wpf.Controller;
+using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
+using MiApp.LM.Presentacion.Wpf.ViewModels;
 using MiApp.LM.Presentacion.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,23 +26,51 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<MainWindowViewModel>();
 
+                    services.AddSingleton<MonoPantallaView>();
+                    services.AddSingleton<MonoPantallaViewModel>();
+
+                    services.AddSingleton<MonoPantallaEstadisticasView>();
+                    services.AddSingleton<MonoPantallaEstadisticasViewModels>();
+
+                    services.AddSingleton<MonoPantallaListadoView>();
+                    services.AddSingleton<MonoPantallaListadoViewModels>();
+
+                    services.AddSingleton<MonoPantallaOfertasView>();
+                    services.AddSingleton<MonoPantallaOfertasViewModels>();
+
+                    services.AddSingleton<MonoPantallaPedidosView>();
+                    services.AddSingleton<MonoPantallaPedidosViewModels>();
+
+                    services.AddSingleton<MonoPantallaProyectosView>();
+                    services.AddSingleton<MonoPantallaProyectosViewModels>();
+
+                    services.AddSingleton<NavigationStore>();
+
+                    services.AddSingleton<IProyectoController, ProyectoController>();
+                    services.AddSingleton<IElementoController, ElementoController>();
+
                 }).Build();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+        //    await AppHost.StartAsync();
+        //    var main = AppHost.Services.GetRequiredService<MainWindow>();
+        //    main.DataContext = AppHost.Services.GetRequiredService<MainWindowViewModel>();
+        //    main.Show();
+
             await AppHost.StartAsync();
-            var main = AppHost.Services.GetRequiredService<MainWindow>();
-            main.DataContext = AppHost.Services.GetRequiredService<MainWindowViewModel>();
+            var main = AppHost.Services.GetRequiredService<MonoPantallaView>();
+            main.DataContext = AppHost.Services.GetRequiredService<MonoPantallaViewModel>();
             main.Show();
 
             base.OnStartup(e);
-        }
-
-        protected override async void OnExit(ExitEventArgs e)
-        {
-            await AppHost.StopAsync();
-            base.OnExit(e);
-        }
     }
+
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        await AppHost.StopAsync();
+        base.OnExit(e);
+    }
+}
 }

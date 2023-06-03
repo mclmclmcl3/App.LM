@@ -2,12 +2,39 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:v="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
+             xmlns:vm="clr-namespace:MiApp.LM.Presentacion.Wpf.ViewModels"
              xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf">
 
     <Application.Resources>
         <ResourceDictionary>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaEstadisticasViewModels}">
+                <v:MonoPantallaEstadisticasView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaListadoViewModels}">
+                <v:MonoPantallaListadoView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaOfertasViewModels}">
+                <v:MonoPantallaOfertasView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaPedidosViewModels}">
+                <v:MonoPantallaPedidosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
+                <v:MonoPantallaProyectosView/>
+            </DataTemplate>
+            
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Dictionaries/Colores.xaml"/>
+                <ResourceDictionary Source="Recources/Dictionaries/Colores.xaml"/>
+                <ResourceDictionary Source="Recources/Dictionaries/RadDropDownButton.xaml"/>
+                <ResourceDictionary Source="Recources/Dictionaries/FontSizes.xaml"/>
+                <ResourceDictionary Source="Recources/Dictionaries/BotonMenuPrincipal.xaml"/>
+                <ResourceDictionary Source="Recources/Dictionaries/BotonesAplicacion.xaml"/>
 
 
             </ResourceDictionary.MergedDictionaries>

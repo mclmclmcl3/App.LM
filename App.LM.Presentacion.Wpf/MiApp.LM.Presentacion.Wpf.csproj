@@ -8,14 +8,168 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Recources\Imagenes\acabados.png" />
+    <None Remove="Recources\Imagenes\agregar.png" />
+    <None Remove="Recources\Imagenes\asm.PNG" />
+    <None Remove="Recources\Imagenes\borrar.png" />
+    <None Remove="Recources\Imagenes\buscar.png" />
+    <None Remove="Recources\Imagenes\campos.png" />
+    <None Remove="Recources\Imagenes\Capital.png" />
+    <None Remove="Recources\Imagenes\columnas.png" />
+    <None Remove="Recources\Imagenes\configuracion.png" />
+    <None Remove="Recources\Imagenes\email.png" />
+    <None Remove="Recources\Imagenes\estadistica.png" />
+    <None Remove="Recources\Imagenes\excel.png" />
+    <None Remove="Recources\Imagenes\exit.png" />
+    <None Remove="Recources\Imagenes\filas.png" />
+    <None Remove="Recources\Imagenes\filtro.png" />
+    <None Remove="Recources\Imagenes\flechaAbajo.png" />
+    <None Remove="Recources\Imagenes\flechaArriba.png" />
+    <None Remove="Recources\Imagenes\flechaDerecha.png" />
+    <None Remove="Recources\Imagenes\flechaIzquierda.png" />
+    <None Remove="Recources\Imagenes\headers.png" />
+    <None Remove="Recources\Imagenes\inventor.png" />
+    <None Remove="Recources\Imagenes\listado.png" />
+    <None Remove="Recources\Imagenes\logo.jpg" />
+    <None Remove="Recources\Imagenes\manual.png" />
+    <None Remove="Recources\Imagenes\menu.png" />
+    <None Remove="Recources\Imagenes\modificar.png" />
+    <None Remove="Recources\Imagenes\navision.PNG" />
+    <None Remove="Recources\Imagenes\oferta.png" />
+    <None Remove="Recources\Imagenes\part.PNG" />
+    <None Remove="Recources\Imagenes\pdf.png" />
+    <None Remove="Recources\Imagenes\pedido.png" />
+    <None Remove="Recources\Imagenes\proyecto.png" />
+    <None Remove="Recources\Imagenes\proyectos.png" />
+    <None Remove="Recources\Imagenes\reemplazar.png" />
+    <None Remove="Recources\Imagenes\resaltar.png" />
+    <None Remove="Recources\Imagenes\sap.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Recourses\Controles\" />
-    <Folder Include="Recourses\Imagenes\" />
+    <Folder Include="Recources\Controles\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="telerik.ui.for.wpf.netcore.xaml" Version="2022.3.912" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App.LM.Aplicacion\MiApp.LM.Aplicacion.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recources\Imagenes\acabados.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\agregar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\asm.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\borrar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\buscar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\campos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\Capital.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\columnas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\configuracion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\email.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\estadistica.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\excel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\exit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\filas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\filtro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\flechaAbajo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\flechaArriba.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\flechaDerecha.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\flechaIzquierda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\headers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\inventor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\listado.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\manual.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\modificar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\navision.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\oferta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\part.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\pdf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\pedido.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\proyecto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\proyectos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\reemplazar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\resaltar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recources\Imagenes\sap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

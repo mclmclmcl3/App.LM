@@ -1,0 +1,123 @@
+﻿<Window x:Class="MiApp.LM.Presentacion.Wpf.Views.Modals.ModalsInsertarProyectoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views.Modals"
+        mc:Ignorable="d" FontSize="20" Background="#FFC7CBDE"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        x:Name="root"
+        Title="Insertar Proyecto" Height="260" Width="600">
+
+        <Window.Resources>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="Margin" Value="10 2"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+            </Style>
+
+            <Style x:Key="Titulo" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Foreground" Value="DarkBlue"/>
+            </Style>
+
+            <Style x:Key="btn" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="Padding" Value="2"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+
+        </Window.Resources>
+    
+        <Grid 
+        Margin="10">
+            <Border 
+            BorderBrush="#FF9DA2B9" 
+            BorderThickness="2"
+            Padding="5">
+
+                <StackPanel Orientation="Vertical">
+                    <Border
+                    Grid.ColumnSpan="2"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Padding="0,20,0,20"
+                    Background="#FFE5E7F1">
+                        <TextBlock
+                    Style="{StaticResource Titulo}">
+                    <Span>
+                        <Bold>Formulario de Inserción de Proyectos</Bold>
+                    </Span>
+                        </TextBlock>
+                    </Border>
+                    <Grid Margin="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="350"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"><Span>Nombre:</Span></TextBlock>
+                        <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1"><Span>Descripcion:</Span></TextBlock>
+
+                        <TextBox
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="{Binding Nombre, ElementName=root}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"/>
+
+                        <TextBox
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    Text="{Binding Descripcion, ElementName=root}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"/>
+                    </Grid>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border 
+                        Margin="2"
+                        Grid.Column="2"
+                        CornerRadius="5"
+                        BorderBrush="#FFE5E7F1"
+                        BorderThickness="1">
+                            <Button 
+                        Style="{StaticResource btn}"
+                        Content="Crear" Click="Button_Click"/>
+                        </Border>
+                        <Border
+                        Margin="2"
+                        Grid.Column="3"
+                        CornerRadius="5"
+                        BorderBrush="#FFE5E7F1"
+                        BorderThickness="1">
+                            <Button 
+                        Style="{StaticResource btn}"
+                        Content="Cancelar"
+                        Click="Btn_Cancelar"/>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+</Window>

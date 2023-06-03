@@ -7,8 +7,10 @@
     <SolidColorBrush x:Key="Info" Color="#5bc0de"/>
     <SolidColorBrush x:Key="Warning" Color="#f0ad4e"/>
     <SolidColorBrush x:Key="Danger" Color="#d9534f"/>
-    <SolidColorBrush x:Key="Black" Color="#292b2c"/>
-    <SolidColorBrush x:Key="White" Color="#f7f7f7"/>
+    <SolidColorBrush x:Key="Negro" Color="#292b2c"/>
+    <SolidColorBrush x:Key="Blanco" Color="#f7f7f7"/>
+    <SolidColorBrush x:Key="Claro" Color="#FFD0D0D0"/>
+    <SolidColorBrush x:Key="Oscuro" Color="#FF3E3E3E"/>
 
     <SolidColorBrush x:Key="DarkGrey" Color="#F7323232"/>
     <SolidColorBrush x:Key="Gray" Color="Gray"/>
