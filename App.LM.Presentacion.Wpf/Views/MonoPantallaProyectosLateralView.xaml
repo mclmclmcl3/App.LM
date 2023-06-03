@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
+             xmlns:vm ="clr-namespace:MiApp.LM.Presentacion.Wpf.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -29,12 +30,24 @@
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="FontSize" Value="12" />
         </Style>
-
+        <Style TargetType="Expander">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Expander}">
+                        <HeaderedContentControl Background="{StaticResource Success}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <Grid>
 
         <Border
-            Grid.Column="0"
             BorderBrush="Gray"
             BorderThickness="1"
             CornerRadius="5"
@@ -48,15 +61,16 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Expander 
+                <Expander x:Name="Filtro"
                     Grid.Row="0"
-                    Header="Filtro" 
+                    Header="Filtro"
+                    Padding="0,10"
+                    Background="{StaticResource Success}"
                     Style="{StaticResource Titulo}"
-                    IsExpanded="True"
-                    Padding="5">
-                    <StackPanel Orientation="Vertical">
+                    IsExpanded="True">
+                    <StackPanel Orientation="Vertical" Margin="0,0,5,0">
 
-                        <Grid Margin="0,0,0,5">
+                        <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
@@ -96,7 +110,7 @@
                                 Content="Descripcion: "/>
                             <TextBox 
                                 Grid.Column="1" 
-                                 Style="{StaticResource Normal}"
+                                Style="{StaticResource Normal}"
                                 Padding="5"
                                 FontFamily="Tahoma"
                                 x:Name="txtContieneDescripcion" 
@@ -158,6 +172,7 @@
                             Background="{StaticResource Claro}"
                             ItemsSource="{Binding ListaProyectos,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             SelectedItem="{Binding Proyecto}"
+                            KeyDown="LV_Proyectos_KeyDown"
                             FontFamily="Source Sans Pro SemiBold"
                             Padding="5"
                             VerticalAlignment="Stretch"
@@ -180,7 +195,7 @@
 
                                     <GridViewColumn 
                                         Header="Descripcion" 
-                                        Width="250">
+                                        Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock 

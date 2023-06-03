@@ -27,7 +27,23 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             {
                 _proyecto = value;
                 OnPropertyChange(nameof(Proyecto));
+                if (Proyecto != null)
+                    Visibilidad = "Visible";
+                else
+                    Visibilidad = "Hidden";
                 FiltroLista();
+            }
+        }
+
+
+        private string _visibilidad = "Hidden";
+        public string Visibilidad
+        {
+            get => _visibilidad;
+            set
+            {
+                _visibilidad = value;
+                OnPropertyChange();
             }
         }
 

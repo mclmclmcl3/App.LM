@@ -28,6 +28,14 @@
             <DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
                 <v:MonoPantallaProyectosView/>
             </DataTemplate>
+
+            <!--<DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
+                <v:MonoPantallaProyectosLateralView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
+                <v:MonoPantallaProyectosPrincipalView/>
+            </DataTemplate>-->
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Recources/Dictionaries/Colores.xaml"/>

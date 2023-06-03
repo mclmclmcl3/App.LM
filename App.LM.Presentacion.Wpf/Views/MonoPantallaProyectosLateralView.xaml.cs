@@ -2,39 +2,27 @@
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MiApp.LM.Presentacion.Wpf.Views
 {
-    /// <summary>
-    /// Lógica de interacción para MonoPantallaProyectosLateralView.xaml
-    /// </summary>
     public partial class MonoPantallaProyectosLateralView : UserControl
     {
-        private MonoPantallaProyectosViewModels viewmodel;
+        private MonoPantallaProyectosViewModels _viewmodel;
         public MonoPantallaProyectosLateralView()
         {
             InitializeComponent();
-            this.DataContext = viewmodel = App.AppHost.Services.GetService<MonoPantallaProyectosViewModels>();
+            this.DataContext = _viewmodel = App.AppHost.Services.GetService<MonoPantallaProyectosViewModels>();
         }
 
         private void On_Loeader(object sender, RoutedEventArgs e)
         {
             var cant = LV_Proyectos.Items;
             if (cant.Count > 0)
-                LV_Proyectos.SelectedItem = viewmodel.ListaProyectos.IndexOf(viewmodel.Proyecto);
+                LV_Proyectos.SelectedItem = _viewmodel.ListaProyectos.IndexOf(_viewmodel.Proyecto);
         }
 
         private void CambioListBox(object sender, TextChangedEventArgs e)
@@ -56,6 +44,18 @@ namespace MiApp.LM.Presentacion.Wpf.Views
         {
             if (string.IsNullOrEmpty(txtContieneDescripcion.Text)) return true;
             else return ((item as Proyecto).Descripcion.IndexOf(txtContieneDescripcion.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+
+        private void LV_Proyectos_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Escape)
+            {
+                LV_Proyectos.SelectedItems.Clear();
+                Filtro.Focus();
+                _viewmodel.Proyecto = null;
+                
+            }
         }
     }
 }

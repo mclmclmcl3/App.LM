@@ -42,6 +42,8 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<MonoPantallaPedidosViewModels>();
 
                     services.AddSingleton<MonoPantallaProyectosView>();
+                    services.AddSingleton<MonoPantallaProyectosLateralView>();
+                    services.AddSingleton<MonoPantallaProyectosPrincipalView>();
                     services.AddSingleton<MonoPantallaProyectosViewModels>();
 
                     services.AddSingleton<NavigationStore>();
@@ -54,23 +56,33 @@ namespace MiApp.LM.Presentacion.Wpf
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-        //    await AppHost.StartAsync();
-        //    var main = AppHost.Services.GetRequiredService<MainWindow>();
-        //    main.DataContext = AppHost.Services.GetRequiredService<MainWindowViewModel>();
-        //    main.Show();
-
             await AppHost.StartAsync();
+
+            //    await AppHost.StartAsync();
+            //    var main = AppHost.Services.GetRequiredService<MainWindow>();
+            //    main.DataContext = AppHost.Services.GetRequiredService<MainWindowViewModel>();
+            //    main.Show();
+
+            //var Proyectos = AppHost.Services.GetRequiredService<MonoPantallaProyectosView>();
+            //var Proyecotslateral = AppHost.Services.GetRequiredService<MonoPantallaProyectosLateralView>();
+            //var ProyectosPrincipal = AppHost.Services.GetRequiredService<MonoPantallaProyectosPrincipalView>();
+
+            //Proyectos.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
+            //Proyecotslateral.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
+            //ProyectosPrincipal.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
+
+
             var main = AppHost.Services.GetRequiredService<MonoPantallaView>();
             main.DataContext = AppHost.Services.GetRequiredService<MonoPantallaViewModel>();
             main.Show();
 
             base.OnStartup(e);
-    }
+        }
 
-    protected override async void OnExit(ExitEventArgs e)
-    {
-        await AppHost.StopAsync();
-        base.OnExit(e);
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            await AppHost.StopAsync();
+            base.OnExit(e);
+        }
     }
-}
 }
