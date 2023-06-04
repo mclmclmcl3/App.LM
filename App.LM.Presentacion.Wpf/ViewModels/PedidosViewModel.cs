@@ -3,11 +3,11 @@ using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 
 namespace MiApp.LM.Presentacion.Wpf.ViewModels
 {
-    public class OfertasViewModels : ViewModelBase
+    public class PedidosViewModel : ViewModelBase
     {
-        public OfertasViewModels(NavigationStore navigationStore)
-        {
 
+        public PedidosViewModel(NavigationStore navigationStore)
+        {
         }
     }
 }

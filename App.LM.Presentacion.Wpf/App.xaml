@@ -9,23 +9,23 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <DataTemplate DataType="{x:Type vm:EstadisticasViewModels}">
+            <DataTemplate DataType="{x:Type vm:EstadisticasViewModel}">
                 <v:EstadisticasView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:ListadoViewModels}">
+            <DataTemplate DataType="{x:Type vm:ListadoViewModel}">
                 <v:ListadoView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:OfertasViewModels}">
+            <DataTemplate DataType="{x:Type vm:OfertasViewModel}">
                 <v:OfertasView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:PedidosViewModels}">
+            <DataTemplate DataType="{x:Type vm:PedidosViewModel}">
                 <v:PedidosView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:ProyectosViewModels}">
+            <DataTemplate DataType="{x:Type vm:ProyectosViewModel}">
                 <v:ProyectosView/>
             </DataTemplate>
 

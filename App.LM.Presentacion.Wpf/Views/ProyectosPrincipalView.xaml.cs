@@ -6,12 +6,12 @@ namespace MiApp.LM.Presentacion.Wpf.Views
 {
     public partial class ProyectosPrincipalView : UserControl
     {
-        private ProyectosViewModels _viewmodel;
+        private ProyectosViewModel _viewmodel;
 
         public ProyectosPrincipalView()
         {
             InitializeComponent();
-            this.DataContext = _viewmodel = App.AppHost.Services.GetRequiredService<ProyectosViewModels>();
+            this.DataContext = _viewmodel = App.AppHost.Services.GetRequiredService<ProyectosViewModel>();
         }
     }
 }

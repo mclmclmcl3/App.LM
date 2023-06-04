@@ -19,7 +19,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
 {
     public partial class ModalModificarProyectoView : Window, INotifyPropertyChanged
     {
-        private readonly ProyectosViewModels _viewModel;
+        private readonly ProyectosViewModel _viewModel;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private string nombre;
@@ -36,7 +36,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
             set { descripcion = value; OnPropertyChange(nameof(Descripcion)); }
         }
 
-        public ModalModificarProyectoView(ProyectosViewModels _viewModel)
+        public ModalModificarProyectoView(ProyectosViewModel _viewModel)
         {
             this._viewModel = _viewModel;
             Nombre = _viewModel.Proyecto.Nombre;

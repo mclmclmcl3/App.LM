@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using MiApp.LM.Presentacion.Wpf.Models;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace MiApp.LM.Presentacion.Wpf.MVVM
@@ -6,7 +7,6 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-
 
         public void OnPropertyChange([CallerMemberName] string propertyName = null)
         {

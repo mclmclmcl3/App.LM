@@ -13,7 +13,7 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM.Navegacion
 
         public override void Execute(object parameter)
         {
-            _navigationStore.CurrentViewModel = new OfertasViewModels(_navigationStore);
+            _navigationStore.CurrentViewModel = new OfertasViewModel(_navigationStore);
 
             //VentanaDialogo vdialog = new VentanaDialogo("Home Dialogo");
             //vdialog.ShowDialog();

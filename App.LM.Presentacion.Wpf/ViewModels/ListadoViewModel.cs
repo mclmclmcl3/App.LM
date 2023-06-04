@@ -3,9 +3,9 @@ using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 
 namespace MiApp.LM.Presentacion.Wpf.ViewModels
 {
-    public class ListadoViewModels : ViewModelBase
+    public class ListadoViewModel : ViewModelBase
     {
-        public ListadoViewModels(NavigationStore navigationStore)
+        public ListadoViewModel(NavigationStore navigationStore)
         {
 
         }

@@ -3,9 +3,9 @@ using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 
 namespace MiApp.LM.Presentacion.Wpf.ViewModels
 {
-    public class EstadisticasViewModels : ViewModelBase
+    public class EstadisticasViewModel : ViewModelBase
     {
-        public EstadisticasViewModels(NavigationStore navigationStore)
+        public EstadisticasViewModel(NavigationStore navigationStore)
         {
 
         }

@@ -1,5 +1,8 @@
 ﻿using MiApp.LM.Presentacion.Wpf.Controller;
+using MiApp.LM.Presentacion.Wpf.Mensajeria;
+using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
+using MiApp.LM.Presentacion.Wpf.Resources.Controles;
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using MiApp.LM.Presentacion.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,23 +29,28 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<InicioViewModel>();
 
                     services.AddSingleton<EstadisticasView>();
-                    services.AddSingleton<EstadisticasViewModels>();
+                    services.AddSingleton<EstadisticasViewModel>();
 
                     services.AddSingleton<ListadoView>();
-                    services.AddSingleton<ListadoViewModels>();
+                    services.AddSingleton<ListadoViewModel>();
 
                     services.AddSingleton<OfertasView>();
-                    services.AddSingleton<OfertasViewModels>();
+                    services.AddSingleton<OfertasViewModel>();
 
                     services.AddSingleton<PedidosView>();
-                    services.AddSingleton<PedidosViewModels>();
+                    services.AddSingleton<PedidosViewModel>();
 
                     services.AddSingleton<ProyectosView>();
                     services.AddSingleton<ProyectosLateralView>();
                     services.AddSingleton<ProyectosPrincipalView>();
-                    services.AddSingleton<ProyectosViewModels>();
+                    services.AddSingleton<ProyectosViewModel>();
+
+                    services.AddSingleton<PiePagina>();
+                    services.AddSingleton<PiePaginaViewModel>();
+                    services.AddSingleton<MensajePiePagina>();
 
                     services.AddSingleton<NavigationStore>();
+                    services.AddSingleton<EventUpdate>();
 
                     services.AddSingleton<IProyectoController, ProyectoController>();
                     services.AddSingleton<IElementoController, ElementoController>();
@@ -54,14 +62,9 @@ namespace MiApp.LM.Presentacion.Wpf
         {
             await AppHost.StartAsync();
 
-            //var Proyectos = AppHost.Services.GetRequiredService<MonoPantallaProyectosView>();
-            //var Proyecotslateral = AppHost.Services.GetRequiredService<MonoPantallaProyectosLateralView>();
-            //var ProyectosPrincipal = AppHost.Services.GetRequiredService<MonoPantallaProyectosPrincipalView>();
-
-            //Proyectos.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
-            //Proyecotslateral.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
-            //ProyectosPrincipal.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
-
+            var pie = AppHost.Services.GetRequiredService<PiePaginaViewModel>();
+            var eventUpdate = AppHost.Services.GetRequiredService<EventUpdate>();
+            pie.EventUpdate = eventUpdate;
 
             var main = AppHost.Services.GetRequiredService<InicioView>();
             main.DataContext = AppHost.Services.GetRequiredService<InicioViewModel>();

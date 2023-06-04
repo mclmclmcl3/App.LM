@@ -1,5 +1,7 @@
 ﻿using MiApp.LM.Dominio.Models;
 using MiApp.LM.Presentacion.Wpf.Controller;
+using MiApp.LM.Presentacion.Wpf.Mensajeria;
+using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals;
 using System.Collections.Generic;
@@ -12,13 +14,17 @@ using ViewModelBase = MiApp.LM.Presentacion.Wpf.MVVM.ViewModelBase;
 
 namespace MiApp.LM.Presentacion.Wpf.ViewModels
 {
-    public class ProyectosViewModels : ViewModelBase
+    public class ProyectosViewModel : ViewModelBase
     {
         private Proyecto _proyecto;
         private ObservableCollection<Proyecto> _listaProyectos = new ObservableCollection<Proyecto>();
         private List<Elemento> _listaElementos;
         public IProyectoController PController = new ProyectoController();
         public IElementoController EController = new ElementoController();
+        private Elemento _elemento;
+        private string _visibilidad = "Hidden";
+        private EventUpdate eventUpdate;
+        public NavigationStore NavigationStore { get; set; }
 
         public Proyecto Proyecto
         {
@@ -28,15 +34,33 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 _proyecto = value;
                 OnPropertyChange(nameof(Proyecto));
                 if (Proyecto != null)
+                {
                     Visibilidad = "Visible";
+                    ProyectoActivo.GetInstancia.Proyecto = value;
+
+                    eventUpdate.MensajePiePagina =
+                        new MensajePiePagina()
+                        {
+                            Mensaje = "Proyecto Seleccionado",
+                            ColorBg = Colores.Primary,
+                            ColorFg = Colores.Blanco
+                        };
+                }
                 else
+                {
                     Visibilidad = "Hidden";
+                    eventUpdate.MensajePiePagina =
+                        new MensajePiePagina()
+                        {
+                            Mensaje = "No hay Proyecto Seleccionado",
+                            ColorBg = Colores.Warning,
+                            ColorFg = Colores.Blanco
+                        };
+                }
+                eventUpdate.PublishParameter();
                 FiltroLista();
             }
         }
-
-
-        private string _visibilidad = "Hidden";
         public string Visibilidad
         {
             get => _visibilidad;
@@ -46,13 +70,11 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 OnPropertyChange();
             }
         }
-
         public ObservableCollection<Proyecto> ListaProyectos
         {
             get { return _listaProyectos; }
             set { _listaProyectos = value; }
         }
-
         public List<Elemento> ListaElementos
         {
             get { return _listaElementos; }
@@ -62,8 +84,6 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 OnPropertyChange(nameof(ListaElementos));
             }
         }
-
-        private Elemento _elemento;
         public Elemento Elemento
         {
             get { return _elemento; }
@@ -74,14 +94,16 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
         public ICommand ModificarProyectoCommand { get; }
         public ICommand BorrarProyectoCommand { get; }
 
-        public ProyectosViewModels(NavigationStore navigationStore)
+        public ProyectosViewModel(NavigationStore navigationStore, EventUpdate eventUpdate)
         {
             ListaProyectos = new ObservableCollection<Proyecto>();
             InsertarProyectoCommand = new NavegacionInsertarProyectoCommand(this);
             ModificarProyectoCommand = new NavegacionModificarProyectoCommand(this);
             BorrarProyectoCommand = new DelegateCommand(BorrarProyecto);
 
+            this.eventUpdate = eventUpdate;
             Actualizar();
+            NavigationStore = navigationStore;
         }
 
         public void Actualizar()

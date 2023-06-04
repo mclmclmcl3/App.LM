@@ -5,9 +5,9 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals
 {
     public class NavegacionModificarProyectoCommand : CommandBase
     {
-        private readonly ProyectosViewModels monoPantallaProyectosViewModels;
+        private readonly ProyectosViewModel monoPantallaProyectosViewModels;
 
-        public NavegacionModificarProyectoCommand(ProyectosViewModels monoPantallaProyectosViewModels)
+        public NavegacionModificarProyectoCommand(ProyectosViewModel monoPantallaProyectosViewModels)
         {
             this.monoPantallaProyectosViewModels = monoPantallaProyectosViewModels;
         }

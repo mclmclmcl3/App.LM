@@ -1,4 +1,5 @@
 ﻿using MiApp.LM.Dominio.Models;
+using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,11 +12,11 @@ namespace MiApp.LM.Presentacion.Wpf.Views
 {
     public partial class ProyectosLateralView : UserControl
     {
-        private ProyectosViewModels _viewmodel;
+        private ProyectosViewModel _viewmodel;
         public ProyectosLateralView()
         {
             InitializeComponent();
-            this.DataContext = _viewmodel = App.AppHost.Services.GetService<ProyectosViewModels>();
+            this.DataContext = _viewmodel = App.AppHost.Services.GetService<ProyectosViewModel>();
         }
 
         private void On_Loeader(object sender, RoutedEventArgs e)
@@ -51,6 +52,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views
         {
             if(e.Key == Key.Escape)
             {
+                ProyectoActivo.GetInstancia.Proyecto = null;
                 LV_Proyectos.SelectedItems.Clear();
                 Filtro.Focus();
                 _viewmodel.Proyecto = null;
