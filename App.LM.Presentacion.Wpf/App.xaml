@@ -9,24 +9,24 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <DataTemplate DataType="{x:Type vm:MonoPantallaEstadisticasViewModels}">
+            <DataTemplate DataType="{x:Type vm:EstadisticasViewModels}">
                 <v:MonoPantallaEstadisticasView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MonoPantallaListadoViewModels}">
-                <v:MonoPantallaListadoView/>
+            <DataTemplate DataType="{x:Type vm:ListadoViewModels}">
+                <v:ListadoView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MonoPantallaOfertasViewModels}">
-                <v:MonoPantallaOfertasView/>
+            <DataTemplate DataType="{x:Type vm:OfertasViewModels}">
+                <v:OfertasView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MonoPantallaPedidosViewModels}">
-                <v:MonoPantallaPedidosView/>
+            <DataTemplate DataType="{x:Type vm:PedidosViewModels}">
+                <v:PedidosView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
-                <v:MonoPantallaProyectosView/>
+            <DataTemplate DataType="{x:Type vm:ProyectosViewModels}">
+                <v:ProyectosView/>
             </DataTemplate>
 
             <!--<DataTemplate DataType="{x:Type vm:MonoPantallaProyectosViewModels}">
@@ -38,11 +38,11 @@
             </DataTemplate>-->
             
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Recources/Dictionaries/Colores.xaml"/>
-                <ResourceDictionary Source="Recources/Dictionaries/RadDropDownButton.xaml"/>
-                <ResourceDictionary Source="Recources/Dictionaries/FontSizes.xaml"/>
-                <ResourceDictionary Source="Recources/Dictionaries/BotonMenuPrincipal.xaml"/>
-                <ResourceDictionary Source="Recources/Dictionaries/BotonesAplicacion.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/Colores.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/RadDropDownButton.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/FontSizes.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/BotonMenuPrincipal.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/BotonesAplicacion.xaml"/>
 
 
             </ResourceDictionary.MergedDictionaries>

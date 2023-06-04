@@ -22,29 +22,25 @@ namespace MiApp.LM.Presentacion.Wpf
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices(services =>
                 {
-
-                    services.AddSingleton<MainWindow>();
-                    services.AddSingleton<MainWindowViewModel>();
-
-                    services.AddSingleton<MonoPantallaView>();
-                    services.AddSingleton<MonoPantallaViewModel>();
+                    services.AddSingleton<InicioView>();
+                    services.AddSingleton<InicioViewModel>();
 
                     services.AddSingleton<MonoPantallaEstadisticasView>();
-                    services.AddSingleton<MonoPantallaEstadisticasViewModels>();
+                    services.AddSingleton<EstadisticasViewModels>();
 
-                    services.AddSingleton<MonoPantallaListadoView>();
-                    services.AddSingleton<MonoPantallaListadoViewModels>();
+                    services.AddSingleton<ListadoView>();
+                    services.AddSingleton<ListadoViewModels>();
 
-                    services.AddSingleton<MonoPantallaOfertasView>();
-                    services.AddSingleton<MonoPantallaOfertasViewModels>();
+                    services.AddSingleton<OfertasView>();
+                    services.AddSingleton<OfertasViewModels>();
 
-                    services.AddSingleton<MonoPantallaPedidosView>();
-                    services.AddSingleton<MonoPantallaPedidosViewModels>();
+                    services.AddSingleton<PedidosView>();
+                    services.AddSingleton<PedidosViewModels>();
 
-                    services.AddSingleton<MonoPantallaProyectosView>();
-                    services.AddSingleton<MonoPantallaProyectosLateralView>();
-                    services.AddSingleton<MonoPantallaProyectosPrincipalView>();
-                    services.AddSingleton<MonoPantallaProyectosViewModels>();
+                    services.AddSingleton<ProyectosView>();
+                    services.AddSingleton<ProyectosLateralView>();
+                    services.AddSingleton<ProyectosPrincipalView>();
+                    services.AddSingleton<ProyectosViewModels>();
 
                     services.AddSingleton<NavigationStore>();
 
@@ -58,11 +54,6 @@ namespace MiApp.LM.Presentacion.Wpf
         {
             await AppHost.StartAsync();
 
-            //    await AppHost.StartAsync();
-            //    var main = AppHost.Services.GetRequiredService<MainWindow>();
-            //    main.DataContext = AppHost.Services.GetRequiredService<MainWindowViewModel>();
-            //    main.Show();
-
             //var Proyectos = AppHost.Services.GetRequiredService<MonoPantallaProyectosView>();
             //var Proyecotslateral = AppHost.Services.GetRequiredService<MonoPantallaProyectosLateralView>();
             //var ProyectosPrincipal = AppHost.Services.GetRequiredService<MonoPantallaProyectosPrincipalView>();
@@ -72,8 +63,8 @@ namespace MiApp.LM.Presentacion.Wpf
             //ProyectosPrincipal.DataContext = AppHost.Services.GetRequiredService<MonoPantallaProyectosViewModels>();
 
 
-            var main = AppHost.Services.GetRequiredService<MonoPantallaView>();
-            main.DataContext = AppHost.Services.GetRequiredService<MonoPantallaViewModel>();
+            var main = AppHost.Services.GetRequiredService<InicioView>();
+            main.DataContext = AppHost.Services.GetRequiredService<InicioViewModel>();
             main.Show();
 
             base.OnStartup(e);

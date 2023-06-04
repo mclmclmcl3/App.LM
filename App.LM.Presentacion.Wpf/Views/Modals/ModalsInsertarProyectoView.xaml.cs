@@ -19,7 +19,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
 {
     public partial class ModalsInsertarProyectoView : Window, INotifyPropertyChanged
     {
-        private readonly MonoPantallaProyectosViewModels _viewModel;
+        private readonly ProyectosViewModels _viewModel;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private string nombre;
@@ -36,7 +36,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
             set { descripcion = value; OnPropertyChange(nameof(Descripcion)); }
         }
 
-        public ModalsInsertarProyectoView(MonoPantallaProyectosViewModels monoPantallaProyectosViewModels)
+        public ModalsInsertarProyectoView(ProyectosViewModels monoPantallaProyectosViewModels)
         {
             InitializeComponent();
             this._viewModel = monoPantallaProyectosViewModels;

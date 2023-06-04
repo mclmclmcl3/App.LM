@@ -10,9 +10,9 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals
 {
     public class NavegacionInsertarProyectoCommand : CommandBase
     {
-        private readonly MonoPantallaProyectosViewModels monoPantallaProyectosViewModels;
+        private readonly ProyectosViewModels monoPantallaProyectosViewModels;
 
-        public NavegacionInsertarProyectoCommand(MonoPantallaProyectosViewModels monoPantallaProyectosViewModels)
+        public NavegacionInsertarProyectoCommand(ProyectosViewModels monoPantallaProyectosViewModels)
         {
             this.monoPantallaProyectosViewModels = monoPantallaProyectosViewModels;
         }

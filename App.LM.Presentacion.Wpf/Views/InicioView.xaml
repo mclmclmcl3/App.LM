@@ -1,0 +1,80 @@
+﻿<Window x:Class="MiApp.LM.Presentacion.Wpf.Views.InicioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d" 
+        WindowState="Maximized"
+        Title="Listao de Materiales" Height="1080" Width="1920">
+    
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+            Orientation="Vertical"
+            Background="#FF3E3E3E">
+            <Image Source="/Resources/Imagenes/logo.jpg" Width="140" Margin="5,20"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20,0,10,0">
+                <Image Source="/Resources/Imagenes/proyecto.png" 
+                       Width="30"/>
+                <Button 
+                    Content="Proyectos"
+                    Command="{Binding IrProyectosCommand}"
+                    Style="{StaticResource BotonMenuPrincipal}">
+                </Button>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20,0,10,0">
+                <Image Source="/Resources/Imagenes/listado.png" 
+                       Width="30"/>
+                <Button 
+                    Content="Listado"
+                    Command="{Binding IrListadoCommand}"
+                    Style="{StaticResource BotonMenuPrincipal}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20,0,10,0">
+                <Image Source="/Resources/Imagenes/oferta.png" 
+                       Width="30"/>
+                <Button Content="Ofertas"
+                    Command="{Binding IrOfertasCommand}"
+                    Style="{StaticResource BotonMenuPrincipal}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20,0,10,0">
+                <Image Source="/Resources/Imagenes/pedido.png" 
+                       Width="30"/>
+                <Button Content="Pedidos"
+                    Command="{Binding IrPedidosCommand}"
+                    Style="{StaticResource BotonMenuPrincipal}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20,0,10,0">
+                <Image Source="/Resources/Imagenes/estadistica.png" 
+                       Width="30"/>
+                <Button Content="Estadisticas"
+                    Command="{Binding IrEstadisticasCommand}"
+                    Style="{StaticResource BotonMenuPrincipal}"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}"/>
+    </Grid>
+</Window>

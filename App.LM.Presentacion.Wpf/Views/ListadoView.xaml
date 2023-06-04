@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="MiApp.LM.Presentacion.Wpf.Views.ListadoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <telerik:RadRibbonView
+            Grid.Row="0"
+            telerik:StyleManager.Theme="Expression_Dark"
+            ApplicationName=" Listado Materiales" 
+            Style="{StaticResource Titulo}"
+            ContentHeight="90">
+            <telerik:RadRibbonView.Items>
+
+                <telerik:RadRibbonTab Header="Archivos" Style="{StaticResource Subtitulo}">
+                    <telerik:RadRibbonGroup 
+                        Header="Lecturas Excel" 
+                        Width="auto" 
+                        Style="{StaticResource Subtitulo}">
+                        <telerik:RadRibbonButton Text="Inventor" 
+                            Size="Large"
+                            SmallImage="/Resources/Imagenes/inventor.png" 
+                            Style="{StaticResource Normal}"
+                            Command="{Binding NuevoCommand}"/>
+                        <telerik:RadRibbonButton 
+                            Text="Maestro" 
+                            Size="Large"
+                            SmallImage="/Resources/Imagenes/excel.png" 
+                            Style="{StaticResource Normal}"
+                            Command="{Binding EditarCommand}"/>
+                        <telerik:RadRibbonButton 
+                            Text="Navision" 
+                            Size="Large"
+                            SmallImage="/Resources/Imagenes/navision.png" 
+                            Style="{StaticResource Normal}"
+                            Command="{Binding BorrarCommand}"/>
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup 
+                        Header="Filtros" 
+                        Width="auto"
+                        Style="{StaticResource Subtitulo}">
+
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab Header="View" Style="{StaticResource Subtitulo}">
+
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab Header="Insert" Style="{StaticResource Subtitulo}">
+
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab Header="References" Style="{StaticResource Subtitulo}">
+
+                </telerik:RadRibbonTab>
+
+            </telerik:RadRibbonView.Items>
+        </telerik:RadRibbonView>
+
+        <telerik:RadTreeListView Grid.Row="1"
+            telerik:StyleManager.Theme="Expression_Dark"
+            x:Name="arbol"
+            ColumnWidth="*"
+            DataContext="{Binding ListaArbol}">
+
+            <telerik:RadTreeListView.ChildTableDefinitions>
+                <telerik:TreeListViewTableDefinition ItemsSource="{Binding Elemento}" />
+            </telerik:RadTreeListView.ChildTableDefinitions>
+            <telerik:RadTreeListView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ElementoId}" Header="ElementoId" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Nombre}" Header="Nombre" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Descripcion}" Header="Descripcion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Conjunto}" Header="Conjunto" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Subconjunto}" Header="Subconjunto" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Comentario}" Header="Comentario" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Estado}" Header="Estado" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorBg}" Header="ColorBg" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Fabricante}" Header="Fabricante" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Proveedor}" Header="Proveedor" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Precio}" Header="Precio" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Ofertas}" Header="Ofertas" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Pedido}" Header="Pedido" />
+            </telerik:RadTreeListView.Columns>
+
+        </telerik:RadTreeListView>
+
+
+    </Grid>
+</UserControl>
