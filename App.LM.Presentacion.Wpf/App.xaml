@@ -10,7 +10,7 @@
         <ResourceDictionary>
 
             <DataTemplate DataType="{x:Type vm:EstadisticasViewModels}">
-                <v:MonoPantallaEstadisticasView/>
+                <v:EstadisticasView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:ListadoViewModels}">

@@ -25,7 +25,7 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<InicioView>();
                     services.AddSingleton<InicioViewModel>();
 
-                    services.AddSingleton<MonoPantallaEstadisticasView>();
+                    services.AddSingleton<EstadisticasView>();
                     services.AddSingleton<EstadisticasViewModels>();
 
                     services.AddSingleton<ListadoView>();
