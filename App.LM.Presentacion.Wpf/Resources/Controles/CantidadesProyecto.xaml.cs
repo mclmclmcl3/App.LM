@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App.LM.Presentacion.Wpf
+namespace MiApp.LM.Presentacion.Wpf.Resources.Controles
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para CantidadesProyecto.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CantidadesProyecto : UserControl
     {
-        public MainWindow()
+        public CantidadesProyecto()
         {
             InitializeComponent();
         }

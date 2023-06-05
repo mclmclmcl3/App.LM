@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Infactustura", "03 Infac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Dominio", "04 Dominio", "{9A18C091-400D-470F-BB8D-BE723A121B7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.LM.Presentacion.Wpf", "App.LM.Presentacion.Wpf\App.LM.Presentacion.Wpf.csproj", "{08419348-554E-4B86-A421-7DCC947C9EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiApp.LM.Presentacion.Wpf", "App.LM.Presentacion.Wpf\MiApp.LM.Presentacion.Wpf.csproj", "{08419348-554E-4B86-A421-7DCC947C9EF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.LM.Aplicacion", "App.LM.Aplicacion\App.LM.Aplicacion.csproj", "{E45314A1-03F7-434D-B053-8EC007B96CFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiApp.LM.Aplicacion", "App.LM.Aplicacion\MiApp.LM.Aplicacion.csproj", "{E45314A1-03F7-434D-B053-8EC007B96CFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.LM.Infactustura", "App.LM.Infactustura\App.LM.Infactustura.csproj", "{1D2C35D2-6FB4-4141-AF17-EA06FB207904}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiApp.LM.Infactustura", "App.LM.Infactustura\MiApp.LM.Infactustura.csproj", "{1D2C35D2-6FB4-4141-AF17-EA06FB207904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.LM.Dominio", "App.LM.Dominio\App.LM.Dominio.csproj", "{B97A2DA4-E1E5-4CC4-8303-98B4A7D740C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiApp.LM.Dominio", "App.LM.Dominio\MiApp.LM.Dominio.csproj", "{B97A2DA4-E1E5-4CC4-8303-98B4A7D740C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
+
+    <Style x:Key="DropMenu" TargetType="telerik:RadDropDownButton">
+        <Setter Property="Foreground" Value="{StaticResource Blanco}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStretch" Value="ExtraExpanded"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+
+    <!--<Style x:Key="DropMenu" TargetType="telerik:RadDropDownButton">
+        <Setter Property="telerik:StyleManager.Theme" Value="VisualStudio2019"/>
+        <Setter Property="Foreground" Value="{StaticResource Negro}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStretch" Value="ExtraExpanded"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>-->
+    
+    <Style TargetType="telerik:RadDropDownButton">
+        <Setter Property="telerik:StyleManager.Theme" Value="VisualStudio2019"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    
+    <Style TargetType="telerik:RadButton">
+        <Setter Property="telerik:StyleManager.Theme" Value="VisualStudio2019"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Heavy"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,5"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    
+</ResourceDictionary>
