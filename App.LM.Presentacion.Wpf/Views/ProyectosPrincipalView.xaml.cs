@@ -16,7 +16,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views
 
         private void Loader(object sender, System.Windows.RoutedEventArgs e)
         {
-            _viewmodel.Mensajes();
+            _viewmodel.ActualizarMensajes();
         }
     }
 }

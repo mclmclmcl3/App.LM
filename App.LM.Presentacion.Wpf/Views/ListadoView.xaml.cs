@@ -30,6 +30,7 @@ namespace MiApp.LM.Presentacion.Wpf.Views
         private void Loader(object sender, System.Windows.RoutedEventArgs e)
         {
             arbol.SelectedItem = null;
+            _viewModel.ActualizarMensajes();
         }
     }
 }

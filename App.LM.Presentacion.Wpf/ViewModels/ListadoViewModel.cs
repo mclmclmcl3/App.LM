@@ -35,27 +35,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             {
                 seleccionArbol = value;
                 OnPropertyChanged();
-                if (seleccionArbol != null)
-                {
-                    eventUpdate.MensajePiePagina =
-                        new MensajePiePagina()
-                        {
-                            Mensaje = $"Seleccionado el elemento {seleccionArbol.Elemento.Nombre}",
-                            ColorBg = Colores.Primary,
-                            ColorFg = Colores.Blanco
-                        };
-                }
-                else
-                {
-                    eventUpdate.MensajePiePagina =
-                        new MensajePiePagina()
-                        {
-                            Mensaje = $"No hay elemento selecdcionado",
-                            ColorBg = Colores.Success,
-                            ColorFg = Colores.Blanco
-                        };
-                }
-                eventUpdate.PublishParameter();
+                ActualizarMensajes();
             }
         }
         public Elemento Elemento { get { return elemento; } set { elemento = value; OnPropertyChanged(); } }
@@ -86,7 +66,6 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             var nombre = t as string;
             //MessageBox.Show($"El elemento seleccionado es: {t}");
         }
-
         public void ConstruirArbol()
         {
             Arbol = new ObservableCollection<ArbolElemento>();
@@ -127,6 +106,31 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 else
                     limpiar = false;
             Arbol = padres.Pop().Elementos;
+        }
+        public void ActualizarMensajes()
+        {
+            if (seleccionArbol != null)
+            {
+                eventUpdate.MensajePiePagina =
+                    new MensajePiePagina()
+                    {
+                        Mensaje = $"Seleccionado el elemento {seleccionArbol.Elemento.Nombre}",
+                        ColorBg = Colores.Primary,
+                        ColorFg = Colores.Blanco
+                    };
+            }
+            else
+            {
+                eventUpdate.MensajePiePagina =
+                    new MensajePiePagina()
+                    {
+                        Mensaje = $"No hay elemento selecdcionado",
+                        ColorBg = Colores.Success,
+                        ColorFg = Colores.Blanco
+                    };
+            }
+
+            eventUpdate.PublishParameter();
         }
     }
 }

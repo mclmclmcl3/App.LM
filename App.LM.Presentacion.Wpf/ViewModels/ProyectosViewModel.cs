@@ -34,7 +34,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             {
                 _proyecto = value;
                 OnPropertyChanged(nameof(Proyecto));
-                Mensajes();
+                ActualizarMensajes();
                 FiltroLista();
             }
         }
@@ -110,6 +110,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                         ListaProyectos.Add(proyecto);
                     }
                 }
+                ActualizarMensajes();
             }
         }
         public void FiltroLista()
@@ -120,7 +121,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 ListaElementos = EController.GetAllByProyecto(Proyecto.ProyectoId);
         }
 
-        public void Mensajes()
+        public void ActualizarMensajes()
         {
             if (ListaProyectos.Count == 0)
             {
