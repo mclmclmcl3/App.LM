@@ -8,7 +8,7 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public void OnPropertyChange([CallerMemberName] string propertyName = null)
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

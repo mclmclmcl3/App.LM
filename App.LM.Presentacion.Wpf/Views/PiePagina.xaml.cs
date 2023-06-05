@@ -1,13 +1,10 @@
-﻿using MiApp.LM.Presentacion.Wpf.Models;
+﻿
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
 
-namespace MiApp.LM.Presentacion.Wpf.Resources.Controles
+namespace MiApp.LM.Presentacion.Wpf.Views
 {
-    /// <summary>
-    /// Lógica de interacción para PiePagina.xaml
-    /// </summary>
     public partial class PiePagina : UserControl
     {
         public PiePaginaViewModel _viewModel;

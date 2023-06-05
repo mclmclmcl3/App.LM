@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Loaded="Loader"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <telerik:RadRibbonView
@@ -70,30 +71,35 @@
         <telerik:RadTreeListView Grid.Row="1"
             telerik:StyleManager.Theme="Expression_Dark"
             x:Name="arbol"
-            ColumnWidth="*"
-            DataContext="{Binding ListaArbol}">
+            ColumnWidth="auto"
+            AutoExpandItems="True"
+            SelectedItem="{Binding SeleccionArbol}"
+            ItemsSource="{Binding Arbol}">
 
             <telerik:RadTreeListView.ChildTableDefinitions>
-                <telerik:TreeListViewTableDefinition ItemsSource="{Binding Elemento}" />
+                <telerik:TreeListViewTableDefinition ItemsSource="{Binding Elementos}" />
             </telerik:RadTreeListView.ChildTableDefinitions>
             <telerik:RadTreeListView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ElementoId}" Header="ElementoId" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Nombre}" Header="Nombre" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Descripcion}" Header="Descripcion" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Conjunto}" Header="Conjunto" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Subconjunto}" Header="Subconjunto" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Comentario}" Header="Comentario" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Estado}" Header="Estado" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorBg}" Header="ColorBg" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Fabricante}" Header="Fabricante" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Proveedor}" Header="Proveedor" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Precio}" Header="Precio" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Ofertas}" Header="Ofertas" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Pedido}" Header="Pedido" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Nombre}" Header="Nombre" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Nodo.Izq}" Header="Izq" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Nodo.Dcha}" Header="Dcha" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Nodo.Nivel}" Header="Nivel" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Descripcion}" Header="Descripcion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Conjunto}" Header="Conjunto" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Subconjunto}" Header="Subconjunto" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Comentario}" Header="Comentario" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Estado}" Header="Estado" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.ColorBg}" Header="ColorBg" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Fabricante}" Header="Fabricante" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Proveedor}" Header="Proveedor" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Precio}" Header="Precio" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Ofertas}" Header="Ofertas" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Elemento.Pedido}" Header="Pedido" />
             </telerik:RadTreeListView.Columns>
 
         </telerik:RadTreeListView>
 
+        <local:PiePagina Grid.Row="2" />
 
     </Grid>
 </UserControl>

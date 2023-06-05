@@ -18,7 +18,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             set
             {
                 eventUpdate = value;
-                OnPropertyChange();
+                OnPropertyChanged();
                 eventUpdate.ParameterPassed += Actualizar;
             }
         }
@@ -26,22 +26,22 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
         public string Nombre
         {
             get => nombre;
-            set { nombre = value; OnPropertyChange(); }
+            set { nombre = value; OnPropertyChanged(); }
         }
         public string Mensaje
         {
             get => mensaje;
-            set { mensaje = value; OnPropertyChange(); }
+            set { mensaje = value; OnPropertyChanged(); }
         }
         public string ColorBg
         {
             get => colorBg;
-            set { colorBg = value; OnPropertyChange(); }
+            set { colorBg = value; OnPropertyChanged(); }
         }
         public string ColorFg
         {
             get => colorFg;
-            set { colorFg = value; OnPropertyChange(); }
+            set { colorFg = value; OnPropertyChanged(); }
         }
 
         private void Actualizar()

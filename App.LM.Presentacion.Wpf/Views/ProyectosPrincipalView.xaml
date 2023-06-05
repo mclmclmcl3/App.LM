@@ -6,8 +6,9 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
              xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
+             xmlns:v="clr-namespace:MiApp.LM.Presentacion.Wpf.Views"
              xmlns:controls="clr-namespace:MiApp.LM.Presentacion.Wpf.Resources.Controles"
-             mc:Ignorable="d" Background="White"
+             mc:Ignorable="d" Background="White" Loaded="Loader"
              d:DesignHeight="900" d:DesignWidth="800">
 
     <Grid>
@@ -21,13 +22,13 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <controls:DatosProyecto Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding Visibilidad}"/>
+        <controls:DatosProyecto Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
 
-        <controls:PorcentajeProyecto Grid.Row="1" Grid.Column="0" Visibility="{Binding Visibilidad}"/>
+        <controls:PorcentajeProyecto Grid.Row="1" Grid.Column="0" />
 
-        <controls:CantidadesProyecto Grid.Row="1" Grid.Column="1" Visibility="{Binding Visibilidad}"/>
+        <controls:CantidadesProyecto Grid.Row="1" Grid.Column="1" />
 
-        <controls:PiePagina Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+        <v:PiePagina Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
 
     </Grid>
 </UserControl>

@@ -26,7 +26,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             this.eventUpdate = eventUpdate;
 
             IrEstadisticasCommand = new NavigateEstadisticasViewCommand(navigationStore);
-            IrListadoCommand = new NavigateListadoViewCommand(navigationStore);
+            IrListadoCommand = new NavigateListadoViewCommand(navigationStore, eventUpdate);
             IrOfertasCommand = new NavigateOfertasViewCommand(navigationStore);
             IrPedidosCommand = new NavigatePedidosViewCommand(navigationStore);
             IrProyectosCommand = new NavigateProyectosViewCommand(navigationStore, eventUpdate);
@@ -40,7 +40,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
 
         private void OnCurrentViewModelChange()
         {
-            OnPropertyChange(nameof(CurrentViewModel));
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

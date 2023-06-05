@@ -2,17 +2,10 @@
 using MiApp.LM.Presentacion.Wpf.Mensajeria;
 using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
-using MiApp.LM.Presentacion.Wpf.Resources.Controles;
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using MiApp.LM.Presentacion.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MiApp.LM.Presentacion.Wpf
@@ -51,6 +44,7 @@ namespace MiApp.LM.Presentacion.Wpf
 
                     services.AddSingleton<NavigationStore>();
                     services.AddSingleton<EventUpdate>();
+                    services.AddSingleton<MensajePiePagina>();
 
                     services.AddSingleton<IProyectoController, ProyectoController>();
                     services.AddSingleton<IElementoController, ElementoController>();

@@ -13,5 +13,10 @@ namespace MiApp.LM.Presentacion.Wpf.Views
             InitializeComponent();
             this.DataContext = _viewmodel = App.AppHost.Services.GetRequiredService<ProyectosViewModel>();
         }
+
+        private void Loader(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _viewmodel.Mensajes();
+        }
     }
 }

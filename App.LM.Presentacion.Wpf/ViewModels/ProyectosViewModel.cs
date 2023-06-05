@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
+using Telerik.Windows.Controls.FieldList;
 using ViewModelBase = MiApp.LM.Presentacion.Wpf.MVVM.ViewModelBase;
 
 namespace MiApp.LM.Presentacion.Wpf.ViewModels
@@ -32,32 +33,8 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             set
             {
                 _proyecto = value;
-                OnPropertyChange(nameof(Proyecto));
-                if (Proyecto != null)
-                {
-                    Visibilidad = "Visible";
-                    ProyectoActivo.GetInstancia.Proyecto = value;
-
-                    eventUpdate.MensajePiePagina =
-                        new MensajePiePagina()
-                        {
-                            Mensaje = "Proyecto Seleccionado",
-                            ColorBg = Colores.Primary,
-                            ColorFg = Colores.Blanco
-                        };
-                }
-                else
-                {
-                    Visibilidad = "Hidden";
-                    eventUpdate.MensajePiePagina =
-                        new MensajePiePagina()
-                        {
-                            Mensaje = "No hay Proyecto Seleccionado",
-                            ColorBg = Colores.Warning,
-                            ColorFg = Colores.Blanco
-                        };
-                }
-                eventUpdate.PublishParameter();
+                OnPropertyChanged(nameof(Proyecto));
+                Mensajes();
                 FiltroLista();
             }
         }
@@ -67,7 +44,7 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             set
             {
                 _visibilidad = value;
-                OnPropertyChange();
+                OnPropertyChanged();
             }
         }
         public ObservableCollection<Proyecto> ListaProyectos
@@ -81,13 +58,13 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             set
             {
                 _listaElementos = value;
-                OnPropertyChange(nameof(ListaElementos));
+                OnPropertyChanged(nameof(ListaElementos));
             }
         }
         public Elemento Elemento
         {
             get { return _elemento; }
-            set { _elemento = value; OnPropertyChange(nameof(Elemento)); }
+            set { _elemento = value; OnPropertyChanged(nameof(Elemento)); }
         }
 
         public ICommand InsertarProyectoCommand { get; }
@@ -102,8 +79,9 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             BorrarProyectoCommand = new DelegateCommand(BorrarProyecto);
 
             this.eventUpdate = eventUpdate;
-            Actualizar();
             NavigationStore = navigationStore;
+            Actualizar();
+     
         }
 
         public void Actualizar()
@@ -114,7 +92,6 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 this.ListaProyectos.Add(proyecto);
             }
         }
-
         private void BorrarProyecto(object obj)
         {
             if (Proyecto != null)
@@ -135,13 +112,54 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
                 }
             }
         }
-
         public void FiltroLista()
         {
             if (Proyecto == null)
                 ListaElementos = EController.GetAllByProyecto(-1);
             else
                 ListaElementos = EController.GetAllByProyecto(Proyecto.ProyectoId);
+        }
+
+        public void Mensajes()
+        {
+            if (ListaProyectos.Count == 0)
+            {
+                eventUpdate.MensajePiePagina =
+                    new MensajePiePagina()
+                    {
+                        Mensaje = "No hay ningun proyecto registrado",
+                        ColorBg = Colores.Danger,
+                        ColorFg = Colores.Blanco
+                    };
+            }
+            else
+            {
+                if (Proyecto != null)
+                {
+                    Visibilidad = "Visible";
+
+                    ProyectoActivo.GetInstancia.Proyecto = Proyecto;
+                    eventUpdate.MensajePiePagina =
+                        new MensajePiePagina()
+                        {
+                            Mensaje = "Proyecto Seleccionado",
+                            ColorBg = Colores.Primary,
+                            ColorFg = Colores.Blanco
+                        };
+                }
+                else
+                {
+                    Visibilidad = "Hidden";
+                    eventUpdate.MensajePiePagina =
+                        new MensajePiePagina()
+                        {
+                            Mensaje = "No hay Proyecto Seleccionado",
+                            ColorBg = Colores.Warning,
+                            ColorFg = Colores.Blanco
+                        };
+                }
+            }
+            eventUpdate.PublishParameter();
         }
     }
 }

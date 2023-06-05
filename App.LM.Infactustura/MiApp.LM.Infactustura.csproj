@@ -10,4 +10,9 @@
     <ProjectReference Include="..\App.LM.Dominio\MiApp.LM.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Conexion\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

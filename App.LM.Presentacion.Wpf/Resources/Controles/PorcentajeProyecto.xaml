@@ -22,7 +22,7 @@
             Margin="0,0,10,10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -42,7 +42,7 @@
                         Style="{StaticResource Titulo}"/>
                 </Border>
 
-                <StackPanel Orientation="Vertical"
+                <StackPanel Orientation="Vertical" Visibility="{Binding Visibilidad}"
                             Grid.Row="1"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left">
