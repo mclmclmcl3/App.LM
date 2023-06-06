@@ -139,7 +139,7 @@
                                 Grid.Column="0" Height="35"
                                 Style="{StaticResource BotonesAplicacion}"
                                 Background="{StaticResource Primary}"
-                                Content="Insertar"
+                                Content="Crear"
                                 Command="{Binding InsertarProyectoCommand}"/>
 
                         <Button

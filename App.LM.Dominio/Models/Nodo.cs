@@ -20,6 +20,7 @@ namespace MiApp.LM.Dominio.Models
         public int Izq { get; set; }
         public int Dcha { get; set; }
         public int Nivel { get; set; }
+        public string Dato { get; set; }
 
         // Relacion uno a uno con Elemento
         public Elemento Elemento { get; set; }

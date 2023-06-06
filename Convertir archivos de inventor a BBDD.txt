@@ -1,0 +1,8 @@
+
+RECOGER DATOS DE LOS ARCHIVOS EXCEL DE INVENTOR
+
+1.	Recojo Datos Excel Inventor
+1.1.Verifico Columnas para que cada dato corresponda a su propiedad
+2.	Los convierto en Árbol Anidado (izq., dcha., nivel)
+2.1 Arbol
+3.	Introducir en la BBDD

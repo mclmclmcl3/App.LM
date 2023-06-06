@@ -1,6 +1,7 @@
 ﻿using MiApp.LM.Aplicacion.Wpf.Models;
 using MiApp.LM.Dominio.Models;
 using MiApp.LM.Presentacion.Wpf.Controller;
+using MiApp.LM.Presentacion.Wpf.Helpper;
 using MiApp.LM.Presentacion.Wpf.Mensajeria;
 using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM;
@@ -57,56 +58,14 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             this.Elementos = new ObservableCollection<Elemento>(this.elementoController.GetAll());
 
             SelectionCommand = new DelegateCommand(SeleccionArbolCommand);
-
-            ConstruirArbol();
+            Arbol = ArbolTreeView.ConstruirArbol(Arbol, Elementos);
         }
 
         private void SeleccionArbolCommand(object t)
         {
             var nombre = t as string;
             //MessageBox.Show($"El elemento seleccionado es: {t}");
-        }
-        public void ConstruirArbol()
-        {
-            Arbol = new ObservableCollection<ArbolElemento>();
-
-            Stack<ArbolElemento> padres = new Stack<ArbolElemento>();
-            foreach (var elemento in this.Elementos.OrderBy(x => x.Nodo.Izq))
-            {
-                ArbolElemento AE = new ArbolElemento(elemento);
-                // Si es el primero
-                if (padres.Count == 0)
-                {
-                    padres.Push(AE);
-                }
-                else
-                {
-                    bool salir = true;
-                    while (salir)
-                        // Si es hermano saco el de padres
-                        if (elemento.Nodo.Izq > padres.Peek().Elemento.Nodo.Dcha && padres.Count > 1)
-                            padres.Pop();
-                        else
-                            salir = false;
-
-                    // Si es hijo del ultimo que hay en la pila
-                    if (padres.Peek().Elemento.Nodo.Izq < elemento.Nodo.Izq && padres.Peek().Elemento.Nodo.Dcha > elemento.Nodo.Dcha)
-                    {
-                        padres.Peek().Elementos.Add(AE);
-                        if (elemento.Nodo.Izq + 1 < elemento.Nodo.Dcha)
-                            padres.Push(AE);
-                    }
-                }
-            }
-            var limpiar = true;
-            while (limpiar)
-                // Si es hermano saco el de padres
-                if (padres.Count > 1)
-                    padres.Pop();
-                else
-                    limpiar = false;
-            Arbol = padres.Pop().Elementos;
-        }
+        }       
         public void ActualizarMensajes()
         {
             if (seleccionArbol != null)

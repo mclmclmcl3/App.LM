@@ -48,6 +48,7 @@
     <None Remove="Resources\Imagenes\reemplazar.png" />
     <None Remove="Resources\Imagenes\resaltar.png" />
     <None Remove="Resources\Imagenes\sap.png" />
+    <None Remove="Setting.db3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -167,6 +168,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Imagenes\sap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Setting.db3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

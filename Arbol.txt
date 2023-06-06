@@ -1,0 +1,22 @@
+
+Arboles
+
+1.	Empezar Proyecto
+1.1.	El proyecto conlleva el empezar Árbol raíz asociado a N.º Proyecto.  ” Nivel 0”
+1.2.	Cada subárbol de raíz, se introduce manualmente (Horno, Bancada, etc.) “Nivel 1”
+1.3.	Introducción de datos
+1.3.1.	Siempre seleccionar Nodo Padre, Nivel mínimo 1, si no error
+1.3.2.	Los convierto en Árbol Anidado (izq., dcha., nivel)
+1.3.2.1.	Exponer tabla para modificación
+1.3.2.1.1.	Limpiar no validos (Tubo, etc.)
+1.3.2.1.1.1.	Modal verificación con lista Check para confirmar eliminación.
+1.3.2.1.2.	Clasificar Tornillería (DIN – hacer archivo exclusiones ejemplo rodamiento)
+1.3.2.1.2.1.	Modal de verificación con lista Check para confirmar eliminación.
+1.3.2.1.2.2.	botón para añadir a exclusiones
+1.3.2.1.3.	Clasificar Perfiles Estructurales (Por las unidades acabadas en mm)
+1.3.2.1.3.1.	Preparar cortes
+1.3.2.1.4.	Clasificar comerciales (No empiezan por proyecto y no corresponden a las anteriores
+1.3.2.1.4.1.	Buscar en maestro productos
+1.3.2.1.4.1.1.	Si Existe se pone en verde
+1.3.2.1.4.1.2.	Si no existe se pone en rojo y crea una lista provisional de elementos a actualizar en inventor
+1.3.2.1.5.	Clasificar piezas y conjuntos (Empiezan por nº proyecto)
