@@ -31,19 +31,19 @@
                             Size="Large"
                             SmallImage="/Resources/Imagenes/inventor.png" 
                             Style="{StaticResource Normal}"
-                            Command="{Binding NuevoCommand}"/>
+                            Command="{Binding InventorCommand}"/>
                         <telerik:RadRibbonButton 
                             Text="Maestro" 
                             Size="Large"
                             SmallImage="/Resources/Imagenes/excel.png" 
                             Style="{StaticResource Normal}"
-                            Command="{Binding EditarCommand}"/>
+                            Command="{Binding MaestroCommand}"/>
                         <telerik:RadRibbonButton 
                             Text="Navision" 
                             Size="Large"
                             SmallImage="/Resources/Imagenes/navision.png" 
                             Style="{StaticResource Normal}"
-                            Command="{Binding BorrarCommand}"/>
+                            Command="{Binding NavisionCommand}"/>
                     </telerik:RadRibbonGroup>
                     <telerik:RadRibbonGroup 
                         Header="Filtros" 

@@ -1,11 +1,18 @@
-﻿using MiApp.LM.Presentacion.Wpf.Controller;
+﻿using MiApp.LM.Dominio.Abstracciones;
+using MiApp.LM.Infactustura.Repositories.RepositoriesExcel;
+using MiApp.LM.Presentacion.Wpf.Controller;
 using MiApp.LM.Presentacion.Wpf.Mensajeria;
 using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 using MiApp.LM.Presentacion.Wpf.ViewModels;
 using MiApp.LM.Presentacion.Wpf.Views;
+using MiApp.LM.Presentacion.Wpf.Views.Modals;
+using MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
 using System.Windows;
 
 namespace MiApp.LM.Presentacion.Wpf
@@ -13,8 +20,19 @@ namespace MiApp.LM.Presentacion.Wpf
     public partial class App : Application
     {
         public static IHost AppHost { get; private set; }
+        public static IConfigurationRoot configuration { get; set; }
         public App()
         {
+            var builder = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+             .AddJsonFile("archivodos.json", optional: true, reloadOnChange: true);
+            configuration = builder.Build();
+
+            //configuration = new ConfigurationBuilder()
+            //    .AddJsonFile("appSettings.json")
+            //    .Build();
+
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices(services =>
                 {
@@ -33,6 +51,9 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<PedidosView>();
                     services.AddSingleton<PedidosViewModel>();
 
+                    services.AddSingleton<CargarInventorView>();
+                    services.AddSingleton<CargarInventorViewModel>();
+
                     services.AddSingleton<ProyectosView>();
                     services.AddSingleton<ProyectosLateralView>();
                     services.AddSingleton<ProyectosPrincipalView>();
@@ -49,11 +70,20 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<IProyectoController, ProyectoController>();
                     services.AddSingleton<IElementoController, ElementoController>();
 
+                    services.AddSingleton<IInventorRepository, InventorRepository>();
+
                 }).Build();
+
         }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+            //var builder = new ConfigurationBuilder()
+            // .SetBasePath(Directory.GetCurrentDirectory())
+            // .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true);
+
+            //configuration = builder.Build();
+
             await AppHost.StartAsync();
 
             var pie = AppHost.Services.GetRequiredService<PiePaginaViewModel>();

@@ -15,9 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MiApp.LM.Presentacion.Wpf.Views.Modals
+namespace MiApp.LM.Presentacion.Wpf.Views.Modals.ModalProyectos
 {
-    public partial class ModalModificarProyectoView : Window, INotifyPropertyChanged
+    public partial class ModalsInsertarProyectoView : Window, INotifyPropertyChanged
     {
         private readonly ProyectosViewModel _viewModel;
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -36,13 +36,10 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
             set { descripcion = value; OnPropertyChange(nameof(Descripcion)); }
         }
 
-        public ModalModificarProyectoView(ProyectosViewModel _viewModel)
+        public ModalsInsertarProyectoView(ProyectosViewModel monoPantallaProyectosViewModels)
         {
-            this._viewModel = _viewModel;
-            Nombre = _viewModel.Proyecto.Nombre;
-            descripcion = _viewModel.Proyecto.Descripcion;
-
             InitializeComponent();
+            this._viewModel = monoPantallaProyectosViewModels;
         }
 
         private void Btn_Cancelar(object sender, RoutedEventArgs e)
@@ -53,18 +50,23 @@ namespace MiApp.LM.Presentacion.Wpf.Views.Modals
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Proyecto proyecto = new Proyecto();
-            proyecto.ProyectoId = _viewModel.Proyecto.ProyectoId;
             proyecto.Nombre = Nombre;
             proyecto.Descripcion = Descripcion;
 
 
-            if (_viewModel.PController.Existe(proyecto.Nombre))
+            if (!_viewModel.PController.Existe(proyecto.Nombre))
             {
-                _viewModel.PController.Actualizar(proyecto);
+                _viewModel.PController.Insertar(proyecto);
                 _viewModel.FiltroLista();
-                _viewModel.Actualizar();
 
+                _viewModel.ListaProyectos.Clear();
+                //inicioViewModel.ListaProyectos.AddRange(new ObservableCollection<Proyecto>(inicioViewModel.PController.GetAll().OrderBy(x=>x.Nombre)));
+                foreach (var proy in _viewModel.PController.GetAll().OrderBy(x => x.Nombre))
+                {
+                    _viewModel.ListaProyectos.Add(proy);
+                }
                 this.Close();
+
             }
         }
 

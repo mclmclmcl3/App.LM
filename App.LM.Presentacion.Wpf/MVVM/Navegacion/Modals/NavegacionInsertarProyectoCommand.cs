@@ -24,5 +24,4 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals
         }
     }
 
-
 }

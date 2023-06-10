@@ -6,6 +6,8 @@ using MiApp.LM.Presentacion.Wpf.Mensajeria;
 using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
+using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals;
+using MiApp.LM.Presentacion.Wpf.Views.Modals;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,6 +52,10 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
 
         public ICommand SelectionCommand { get; set; }
 
+        public ICommand InventorCommand { get; set; }
+        public ICommand MaestroCommand { get; set; }
+        public ICommand NavisionCommand { get; set; }
+
         public ListadoViewModel(NavigationStore navigationStore, EventUpdate eventUpdate)
         {
             this.navigationStore = navigationStore;
@@ -58,8 +64,24 @@ namespace MiApp.LM.Presentacion.Wpf.ViewModels
             this.Elementos = new ObservableCollection<Elemento>(this.elementoController.GetAll());
 
             SelectionCommand = new DelegateCommand(SeleccionArbolCommand);
+
+            InventorCommand = new NavegacionCargarInventorCommand(this);
+            MaestroCommand = new DelegateCommand(AbrirMaestro);
+            NavisionCommand = new DelegateCommand(AbrirNavision);
+
             Arbol = ArbolTreeView.ConstruirArbol(Arbol, Elementos);
         }
+
+        private void AbrirNavision(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AbrirMaestro(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void SeleccionArbolCommand(object t)
         {
