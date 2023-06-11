@@ -5,6 +5,7 @@ using MiApp.LM.Presentacion.Wpf.Mensajeria;
 using MiApp.LM.Presentacion.Wpf.Models;
 using MiApp.LM.Presentacion.Wpf.MVVM.Navegacion;
 using MiApp.LM.Presentacion.Wpf.ViewModels;
+using MiApp.LM.Presentacion.Wpf.ViewModels.Modales;
 using MiApp.LM.Presentacion.Wpf.Views;
 using MiApp.LM.Presentacion.Wpf.Views.Modals;
 using MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor;

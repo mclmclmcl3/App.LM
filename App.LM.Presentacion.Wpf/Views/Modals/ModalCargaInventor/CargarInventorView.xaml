@@ -6,52 +6,47 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  
         xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor"
         mc:Ignorable="d" WindowState="Maximized"
-        Title="CargarInventorView" Height="450" Width="800">
+        Title="CargarInventorView" Height="1080" Width="1920">
+
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="90" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label
+        <Grid 
             Grid.Row="0"
-            FontSize="24" FontWeight="Bold"
-            Content="Carga Archivo de Inventor"
-            HorizontalContentAlignment="Center"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            VerticalContentAlignment="Center"/>
-        <Button
-            Grid.Row="1"
-            x:Name="btnOpen"
-            Content="Cargar Archivo" 
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Command="{Binding CargarExcel}"
-            Padding="3"
-            Margin="3"
-            Width="120"/>
-        <Grid
-            Margin="0,20,0,0"
-            Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel 
-                Orientation="Vertical"
-                Background="LightGray">
-                <Label Content="Columnas Excel de Inventor" Background="Black" Foreground="White"/>
-                <ListBox ItemsSource="{ Binding ColumnasExcel}"/>
-                <Label Content="Columnas Excel Teoricas" Background="Black" Foreground="White"/>
-                <ListBox ItemsSource="{Binding ColumnasExcelTeoricas}"/>
-            </StackPanel>
-            <DataGrid 
-                Grid.Column="1"
-                ItemsSource="{Binding ListaInventor}"
-                x:Name="inventorExcel">
-                
-            </DataGrid>
+            Background="{StaticResource Negro}">
+            <Label
+                Foreground="{StaticResource Claro}"
+                FontSize="36" FontWeight="Bold"
+                Content="Carga Archivo de Inventor"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"/>
         </Grid>
+        <Grid Grid.Row="1">
+            
+            <TabControl BorderBrush="Gainsboro" >
+                
+                <TabItem Header="Instrucciones" >
+                    <local:CargarInventorInstruccionesView />
+                </TabItem>
+
+                <TabItem Header="Cargar Excel">
+                    <local:CargarInventorCargaExcelView />
+                </TabItem>
+
+                <TabItem Header="Configurar Columnas">
+                    <local:CargarInventorColumnasView />
+                </TabItem>
+                
+                <TabItem Header="Asociar Perfiles">
+
+                </TabItem>
+                
+            </TabControl>
+        </Grid>
+
     </Grid>
 </Window>

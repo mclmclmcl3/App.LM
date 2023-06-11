@@ -43,6 +43,7 @@
                 <ResourceDictionary Source="Resources/Dictionaries/FontSizes.xaml"/>
                 <ResourceDictionary Source="Resources/Dictionaries/BotonMenuPrincipal.xaml"/>
                 <ResourceDictionary Source="Resources/Dictionaries/BotonesAplicacion.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/EstiloTabControl.xaml"/>
 
 
             </ResourceDictionary.MergedDictionaries>

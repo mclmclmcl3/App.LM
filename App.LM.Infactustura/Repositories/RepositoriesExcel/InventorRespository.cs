@@ -1,4 +1,5 @@
-﻿using MiApp.LM.Dominio.Models;
+﻿using MiApp.LM.Dominio.Abstracciones;
+using MiApp.LM.Dominio.Models;
 using Microsoft.Extensions.Configuration;
 using OfficeOpenXml;
 using System;
@@ -11,76 +12,100 @@ using System.Threading.Tasks;
 
 namespace MiApp.LM.Infactustura.Repositories.RepositoriesExcel
 {
-    public interface IInventorRepository
-    {
-        List<InventorExcel> DataExcel { get; set; }
-        List<string> ColumnasExcel { get; set; }
 
-        void LeerDatos(string filePath);
-    }
     public class InventorRepository : IInventorRepository
     {
-        private string filePath = @"C:\Users\myb19\Desktop\ID011 LM Horno Estructurado.xlsx";
         private FileInfo archivo = null;
         private ExcelWorksheet hoja;
-        public List<string> ColumnasExcel { get; set; }
+
         public List<InventorExcel> DataExcel { get; set; }
 
         public InventorRepository()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             DataExcel = new List<InventorExcel>();
-            ColumnasExcel = new List<string>();
+            //ColumnasExcel = new List<string>();
             using (ExcelPackage libro = new ExcelPackage(archivo))
             {
                 hoja = libro.Workbook.Worksheets["BOM"];
             }
         }
 
-        public void LeerDatos(string filePath)
-        {   
-            if(Ok(filePath))
+        public async Task<List<string>> EncabezadosExcel(string filePath)
+        {
+            return await Task.Run(() =>
             {
-                using (ExcelPackage libro = new ExcelPackage(archivo))
+                List<string> encabezados = new List<string>();
+                if (Ok(filePath))
                 {
-                    hoja = libro.Workbook.Worksheets["BOM"];
-                    if (hoja != null)
+                    using (ExcelPackage libro = new ExcelPackage(archivo))
                     {
-                        int totalRows = hoja.Dimension.Rows;
-                        var UbicacionEncabezados = PosicionesEncabezadosExcel();
-
-                        for (int row = 2; row <= totalRows; row++)
+                        hoja = libro.Workbook.Worksheets["BOM"];
+                        if (hoja != null)
                         {
-                            InventorExcel inventario = new InventorExcel();
-
-                            if (UbicacionEncabezados.ContainsKey("Elemento"))
-                                inventario.Elemento = hoja.Cells[row, UbicacionEncabezados["Elemento"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("CTDAD"))
-                                inventario.Cantidad = hoja.Cells[row, UbicacionEncabezados["CTDAD"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("Nº de pieza"))
-                                inventario.Nombre = hoja.Cells[row, UbicacionEncabezados["Nº de pieza"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("Descripción"))
-                                inventario.Descripcion = hoja.Cells[row, UbicacionEncabezados["Descripción"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("CTDAD de unidades"))
-                                inventario.CantidadUnidades = hoja.Cells[row, UbicacionEncabezados["CTDAD de unidades"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("Masa"))
-                                inventario.Masa = hoja.Cells[row, UbicacionEncabezados["Masa"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("Nombre de archivo"))
-                                inventario.Archivo = hoja.Cells[row, UbicacionEncabezados["Nombre de archivo"]].Value?.ToString();
-                            if (UbicacionEncabezados.ContainsKey("Tipo de componente"))
-                                inventario.Tipo = hoja.Cells[row, UbicacionEncabezados["Tipo de componente"]].Value?.ToString();
-
-                            DataExcel.Add(inventario);
+                            int totalCol = hoja.Dimension.Columns;
+                            for (int i = 1; i < totalCol; i++)
+                            {
+                                encabezados.Add(hoja.Cells[1, i].Value?.ToString());
+                            }
                         }
-
                     }
                 }
-            }
-            else
+                return encabezados;
+            });
+        }
+
+        public async Task LeerDatos(string filePath)
+        {
+            await Task.Run(() =>
             {
-                archivo = null;
-                filePath = string.Empty;
-            }
+                if (Ok(filePath))
+                {
+                    using (ExcelPackage libro = new ExcelPackage(archivo))
+                    {
+                        hoja = libro.Workbook.Worksheets["BOM"];
+                        if (hoja != null)
+                        {
+                            int totalRows = hoja.Dimension.Rows;
+                            var UbicacionEncabezados = PosicionesEncabezadosExcel();
+
+                            for (int row = 2; row <= totalRows; row++)
+                            {
+                                InventorExcel inventario = new InventorExcel();
+
+                                if (UbicacionEncabezados.ContainsKey("Elemento"))
+                                    inventario.Elemento = hoja.Cells[row, UbicacionEncabezados["Elemento"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("CTDAD"))
+                                    inventario.Cantidad = hoja.Cells[row, UbicacionEncabezados["CTDAD"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Nº de pieza"))
+                                    inventario.Nombre = hoja.Cells[row, UbicacionEncabezados["Nº de pieza"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Descripción"))
+                                    inventario.Descripcion = hoja.Cells[row, UbicacionEncabezados["Descripción"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("CTDAD de unidades"))
+                                    inventario.Material = hoja.Cells[row, UbicacionEncabezados["Material"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Material"))
+                                    inventario.CantidadElementos = hoja.Cells[row, UbicacionEncabezados["CTDAD de elementos"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("CTDAD de elementos"))
+                                    inventario.CantidadUnidades = hoja.Cells[row, UbicacionEncabezados["CTDAD de unidades"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Masa"))
+                                    inventario.Masa = hoja.Cells[row, UbicacionEncabezados["Masa"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Nombre de archivo"))
+                                    inventario.Archivo = hoja.Cells[row, UbicacionEncabezados["Nombre de archivo"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Proveedor"))
+                                    inventario.Proveedor = hoja.Cells[row, UbicacionEncabezados["Proveedor"]].Value?.ToString();
+                                if (UbicacionEncabezados.ContainsKey("Tipo de componente"))
+                                    inventario.Tipo = hoja.Cells[row, UbicacionEncabezados["Tipo de componente"]].Value?.ToString();
+
+                                DataExcel.Add(inventario);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    archivo = null;
+                }
+            });
         }
 
         private Dictionary<string, int> PosicionesEncabezadosExcel()
@@ -90,7 +115,7 @@ namespace MiApp.LM.Infactustura.Repositories.RepositoriesExcel
             {
                 Posiciones.Add(this.hoja.Cells[1, col].Value?.ToString(), col);
             }
-            ColumnasExcel = Posiciones.Keys.ToList();
+            //ColumnasExcel = Posiciones.Keys.ToList();
             return Posiciones;
         }
         private bool Ok(string filePath)
@@ -98,6 +123,5 @@ namespace MiApp.LM.Infactustura.Repositories.RepositoriesExcel
             archivo = new FileInfo(filePath);
             return archivo.Exists;
         }
-
     }
 }

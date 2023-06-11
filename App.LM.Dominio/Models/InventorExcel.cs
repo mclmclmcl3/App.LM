@@ -13,8 +13,11 @@ namespace MiApp.LM.Dominio.Models
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string CantidadUnidades { get; set; }
+        public string Material { get; set; }
+        public string CantidadElementos { get; set; }
         public string Masa { get; set; }
         public string Archivo { get; set; }
+        public string Proveedor { get; set; }
         public string Tipo { get; set; }
 
     }
