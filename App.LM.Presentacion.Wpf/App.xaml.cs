@@ -70,8 +70,10 @@ namespace MiApp.LM.Presentacion.Wpf
 
                     services.AddSingleton<IProyectoController, ProyectoController>();
                     services.AddSingleton<IElementoController, ElementoController>();
+                    services.AddSingleton<ISettingRepository, SettingRepository>();
 
                     services.AddSingleton<IInventorRepository, InventorRepository>();
+
 
                 }).Build();
 

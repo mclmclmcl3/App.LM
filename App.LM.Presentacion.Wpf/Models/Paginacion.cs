@@ -94,6 +94,16 @@ namespace MiApp.LM.Presentacion.Wpf.Models
                 OnPropertyChanged(nameof(ListaInventorPaginada));
             }
         }
+        private ObservableCollection<InventorExcel> listaInventorPaginadaEjemplo;
+        public ObservableCollection<InventorExcel> ListaInventorPaginadaEjemplo
+        {
+            get => listaInventorPaginadaEjemplo;
+            set
+            {
+                listaInventorPaginadaEjemplo = value;
+                OnPropertyChanged(nameof(ListaInventorPaginadaEjemplo));
+            }
+        }
         public void LoadData()
         {
             // Cargar los datos correspondientes a la página actual
@@ -105,8 +115,17 @@ namespace MiApp.LM.Presentacion.Wpf.Models
             int endIndex = startIndex + PageSize;
 
             ListaInventorPaginada = new ObservableCollection<InventorExcel>();
+            ListaInventorPaginadaEjemplo = new ObservableCollection<InventorExcel>();
 
             var listado = ListaInventor.Skip(startIndex).Take(PageSize);
+            var listadoEjemplo = ListaInventor.Skip(0).Take(5);
+
+
+            foreach (var item in listadoEjemplo)
+            {
+                ListaInventorPaginadaEjemplo.Add(item);
+            }
+
             foreach (var item in listado)
             {
                 ListaInventorPaginada.Add(item);

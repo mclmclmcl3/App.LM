@@ -33,12 +33,12 @@
                     <local:CargarInventorInstruccionesView />
                 </TabItem>
 
-                <TabItem Header="Cargar Excel">
-                    <local:CargarInventorCargaExcelView />
-                </TabItem>
-
                 <TabItem Header="Configurar Columnas">
                     <local:CargarInventorColumnasView />
+                </TabItem>
+
+                <TabItem Header="Cargar Excel">
+                    <local:CargarInventorCargaExcelView />
                 </TabItem>
                 
                 <TabItem Header="Asociar Perfiles">

@@ -8,5 +8,11 @@ namespace MiApp.LM.Dominio.Abstracciones
 {
     public interface ISettingRepository
     {
+        Task BorrarRutaMaestro();
+        Task DelAllColumnasInventor();
+        Task<List<string>> GetAllColumnasInventor();
+        Task<string> GetRutaMaestro();
+        Task UpdateColumnasInventor(List<string> datosNuevos);
+        Task UpdatetRutaMaestro(string rutaNuevaMaestro);
     }
 }

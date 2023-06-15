@@ -3,10 +3,283 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:local="clr-namespace:MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor" 
+             mc:Ignorable="d" d:Background="White"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Height" Value="35"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="280"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Foreground" Value="{StaticResource Oscuro}"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="100,20,0,20">
+            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <Button
+                    x:Name="btnOpen"
+                    Grid.Row="0"
+                    FontSize="12" FontWeight="Light"
+                    Content="Cargar Archivo" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Command="{Binding CargarExcel}"
+                    Padding="6,3"
+                    Margin="5"
+                    Width="auto"/>
+
+                <TextBox Text="{Binding UltimaRutaExcel}" 
+                         Width="600" 
+                         FontSize="12" FontWeight="Light"
+                         IsReadOnly="True"
+                         Foreground="{StaticResource Oscuro}"
+                         VerticalContentAlignment="Center"/>
+
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1"
+                BorderBrush="{StaticResource Claro}"
+                BorderThickness="1"
+                CornerRadius="10"
+                Margin="30,30,30,30"
+                Padding="30" >
+            <StackPanel Orientation="Vertical">
+
+                <Label 
+                    FontSize="20"
+                    Padding="5"
+                    Foreground="{StaticResource Danger}"
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Content="Solo habrá que cambiarlo cuando desde Inventor"/>
+                <Label 
+                    FontSize="20"
+                    Padding="5"
+                    Foreground="{StaticResource Danger}"
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Content="vengan las columnas con otro nombre."/>
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" 
+                               HorizontalContentAlignment="Center"
+                               FontSize="24"
+                               Padding="3"
+                               Margin="5,0,0,20"
+                               Foreground="{StaticResource Primary}"
+                               Content="Original" />
+                        <Label Grid.Row="1" Content="Elemento" />
+                        <Label Grid.Row="2" Content="Cantidad" />
+                        <Label Grid.Row="3" Content="Nombre" />
+                        <Label Grid.Row="4" Content="Descripcion" />
+                        <Label Grid.Row="5" Content="Cantidad Unidades" />
+                        <Label Grid.Row="6" Content="Material" />
+                        <Label Grid.Row="7" Content="Cantidad Elementos" />
+                        <Label Grid.Row="8" Content="Masa" />
+                        <Label Grid.Row="9" Content="Archivo" />
+                        <Label Grid.Row="10" Content="Proveedor" />
+                        <Label Grid.Row="11" Content="Tipo" />
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label 
+                            Grid.Row="0" 
+                            FontSize="24"
+                            Margin="5,0,0,20"
+                            Padding="3"
+                            HorizontalContentAlignment="Center"
+                            Foreground="{StaticResource Primary}"
+                            Content="Recibido de Inventor" />
+                        <ComboBox 
+                            Grid.Row="1"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboElemento}"
+                            x:Name="C_Elemento"
+                            SelectionChanged="Combo_Elemento"/>
+                        <ComboBox 
+                            Grid.Row="2"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboCantidad}"
+                            x:Name="C_Cantidad"
+                            SelectionChanged="Combo_Cantidad"/>
+                        <ComboBox 
+                            Grid.Row="3"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboNombre}"
+                            x:Name="C_Nombre"
+                            SelectionChanged="Combo_Nombre"/>
+                        <ComboBox 
+                            Grid.Row="4"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboDescripcion}"
+                            x:Name="C_Descripcione"
+                            SelectionChanged="Combo_Descripcion"/>
+                        <ComboBox 
+                            Grid.Row="5"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboCantidadUnidades}"
+                            x:Name="C_CantUnidades"
+                            SelectionChanged="Combo_CantUnidades"/>
+                        <ComboBox 
+                            Grid.Row="6"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboMaterial}"
+                            x:Name="C_Material"
+                            SelectionChanged="Combo_Material"/>
+                        <ComboBox 
+                            Grid.Row="7"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboCantidadElementos}"
+                            x:Name="C_CantElementos"
+                            SelectionChanged="Combo_CantElementos"/>
+                        <ComboBox 
+                            Grid.Row="8"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboMasa}"
+                            x:Name="C_Masa"
+                            SelectionChanged="Combo_Masa"/>
+                        <ComboBox 
+                            Grid.Row="9"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboArchivo}"
+                            x:Name="C_Archivo"
+                            SelectionChanged="Combo_Archivo"/>
+                        <ComboBox 
+                            Grid.Row="10"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboProveedor}"
+                            x:Name="C_Proveedor"
+                            SelectionChanged="Combo_Proveedor"/>
+                        <ComboBox 
+                            Grid.Row="11"
+                            ItemsSource="{Binding ColumnasExcel}"
+                            Text="{Binding ComboTipo}"
+                            x:Name="C_Tipo"
+                            SelectionChanged="Combo_Tipo"/>
+                    </Grid>
+
+                </Grid>
+
+                <Button 
+                    Margin="30,15"
+                    Padding="0,5"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Content="Guardar Cambios"
+                    Command="{Binding GuardarCommand}"/>
+
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1"
+                BorderBrush="{StaticResource Claro}"
+                BorderThickness="1"
+                CornerRadius="10"
+                Margin="30,30,30,30"
+                Padding="30" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock 
+                    FontSize="20"
+                    Foreground="{StaticResource Primary}"
+                    Style="{StaticResource Titulo}"
+                    Text="Si se rellenan todos los campos recibidos de inventor es que todo está bien."/>
+                <TextBlock 
+                    FontSize="20"
+                    Foreground="{StaticResource Primary}"
+                    Style="{StaticResource Titulo}"
+                    Text="Si no es así tienes la opcion de seleccionar un campo."/>
+                <TextBlock/>
+                <TextBlock 
+                    FontSize="20"
+                    Foreground="{StaticResource Warning}"
+                    Style="{StaticResource Titulo}"
+                    Text="Ejemplo de columnas..."/>
+
+                <Grid Margin="0,20,0,20">
+                    <DataGrid 
+                    ItemsSource="{Binding Paginacion.ListaInventorPaginadaEjemplo}"
+                    AutoGenerateColumns="False"
+                    ColumnWidth="auto"
+                    x:Name="inventorExcel">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Elemento" Binding="{Binding Elemento}" />
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}"/>
+                            <DataGridTextColumn Header="CantidadUnidades" Binding="{Binding CantidadUnidades}" />
+                            <DataGridTextColumn Header="Material" Binding="{Binding Material}" />
+                            <DataGridTextColumn Header="CantidadElementos" Binding="{Binding CantidadElementos}" />
+                            <DataGridTextColumn Header="Masa" Binding="{Binding Masa}" />
+                            <DataGridTextColumn Header="Archivo" Binding="{Binding Archivo}" />
+                            <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}"/>
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
