@@ -1,0 +1,21 @@
+SELECT E.ElementoId, E.Nombre, E.PedidoId, O.OfertaId, O.NumeroOferta, P.NumeroPedido
+FROM Elementos AS E
+INNER JOIN Ofertas AS O ON O.ElementoId = E.ElementoId
+INNER JOIN Pedidos AS P ON E.PedidoId = P.PedidoId
+WHERE E.ElementoId = 1
+
+SELECT E.ElementoId, E.Nombre, E.PedidoId, O.OfertaId, O.NumeroOferta, P.NumeroPedido
+FROM Elementos AS E
+INNER JOIN Ofertas AS O ON O.ElementoId = E.ElementoId
+INNER JOIN Pedidos AS P ON E.PedidoId = P.PedidoId
+WHERE E.ElementoId = 2
+
+SELECT E.ElementoId, E.Nombre, E.PedidoId, E.PedidoId, O.NumeroOferta
+FROM Elementos AS E
+INNER JOIN Ofertas AS O ON O.ElementoId = E.ElementoId
+WHERE O.OfertaId = 1
+
+SELECT E.ElementoId, E.Nombre, E.PedidoId, P.NumeroPedido
+FROM Elementos AS E
+INNER JOIN Pedidos AS P ON E.PedidoId = P.PedidoId
+WHERE E.ElementoId = 2

@@ -23,6 +23,6 @@ namespace MiApp.LM.Dominio.Models
         public string Dato { get; set; }
 
         // Relacion uno a uno con Elemento
-        public Elemento Elemento { get; set; }
+        public virtual Elemento Elemento { get; set; }
     }
 }

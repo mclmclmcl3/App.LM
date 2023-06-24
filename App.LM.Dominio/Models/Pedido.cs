@@ -11,10 +11,7 @@ namespace MiApp.LM.Dominio.Models
         public int PedidoId { get; set; }
         public string NumeroPedido { get; set; }
 
-        // Relacion uno a muchos con Elem
-        public List<Elem> Elementos { get; set; }
-
         // Relacion uno a uno con Elemento
-        public Elemento Elemento { get; set; }
+        public virtual Elemento Elemento { get; set; }
     }
 }

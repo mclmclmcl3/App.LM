@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MiApp.LM.Presentacion.Wpf.ViewModels.Modales;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,16 @@ using System.Windows.Shapes;
 namespace MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor
 {
     /// <summary>
-    /// Lógica de interacción para CargarInventorInstruccionesView.xaml
+    /// Lógica de interacción para CargarInventorCargaExcelView.xaml
     /// </summary>
-    public partial class CargarInventorInstruccionesView : UserControl
+    public partial class LoadInvExcelView : UserControl
     {
-        public CargarInventorInstruccionesView()
+        private LoadInvExcelViewModel viewmodel;
+
+        public LoadInvExcelView()
         {
             InitializeComponent();
+            this.DataContext = viewmodel = App.AppHost.Services.GetRequiredService<LoadInvExcelViewModel>();
         }
     }
 }

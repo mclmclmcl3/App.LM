@@ -19,6 +19,11 @@ namespace MiApp.LM.Dominio.Models
         public string Archivo { get; set; }
         public string Proveedor { get; set; }
         public string Tipo { get; set; }
+        //public string SubTipo { get; set; }
+        //public string Comentarios { get; set; }
+        //public string Estado { get; set; }
+        //public string Conjunto { get; set; }
+        //public string SubConjunto { get; set; }
 
     }
 }

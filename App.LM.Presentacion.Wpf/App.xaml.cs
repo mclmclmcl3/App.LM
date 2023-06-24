@@ -1,4 +1,5 @@
-﻿using MiApp.LM.Dominio.Abstracciones;
+﻿using MiApp.LM.Aplicacion.Services.Inventor;
+using MiApp.LM.Dominio.Abstracciones;
 using MiApp.LM.Infactustura.Repositories.RepositoriesExcel;
 using MiApp.LM.Presentacion.Wpf.Controller;
 using MiApp.LM.Presentacion.Wpf.Mensajeria;
@@ -52,8 +53,8 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<PedidosView>();
                     services.AddSingleton<PedidosViewModel>();
 
-                    services.AddSingleton<CargarInventorView>();
-                    services.AddSingleton<CargarInventorViewModel>();
+                    services.AddSingleton<LoadInvView>();
+                    services.AddSingleton<LoadInvViewModel>();
 
                     services.AddSingleton<ProyectosView>();
                     services.AddSingleton<ProyectosLateralView>();
@@ -68,12 +69,17 @@ namespace MiApp.LM.Presentacion.Wpf
                     services.AddSingleton<EventUpdate>();
                     services.AddSingleton<MensajePiePagina>();
 
+                    services.AddSingleton<LoadInvColumnasViewModels>();
+                    services.AddSingleton<LoadInvExcelViewModel>();
+                    services.AddSingleton<LoadInvPerfilesViewModel>();
+
                     services.AddSingleton<IProyectoController, ProyectoController>();
                     services.AddSingleton<IElementoController, ElementoController>();
                     services.AddSingleton<ISettingRepository, SettingRepository>();
+                    services.AddSingleton<IIventorService, InventorService>();
 
                     services.AddSingleton<IInventorRepository, InventorRepository>();
-
+                    services.AddSingleton<TabControl>();
 
                 }).Build();
 

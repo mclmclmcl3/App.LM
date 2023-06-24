@@ -31,6 +31,6 @@ namespace MiApp.LM.Infactustura.Conexion
         public DbSet<Nodo> Nodos { get; set; }
         public DbSet<Oferta> Ofertas { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<Elem> Elems { get; set; }
+        public DbSet<Estado> Estados { get; set; }
     }
 }

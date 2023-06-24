@@ -14,7 +14,7 @@ namespace MiApp.LM.Presentacion.Wpf.MVVM.Navegacion.Modals
         }
         public override void Execute(object parameter)
         {
-            CargarInventorView modal = new CargarInventorView();
+            LoadInvView modal = new LoadInvView();
             modal.ShowDialog();
         }
     }

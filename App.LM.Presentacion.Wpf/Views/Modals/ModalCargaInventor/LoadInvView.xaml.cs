@@ -4,14 +4,16 @@ using System.Windows;
 
 namespace MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor
 {
-    public partial class CargarInventorView : Window
+    public partial class LoadInvView
+        : Window
     {
-        private CargarInventorViewModel viewmodel;
-        public CargarInventorView()
+        private LoadInvViewModel viewmodel;
+        public LoadInvView()
         {
             InitializeComponent();
-            this.DataContext = viewmodel = App.AppHost.Services.GetRequiredService<CargarInventorViewModel>();
+            this.DataContext = viewmodel = App.AppHost.Services.GetRequiredService<LoadInvViewModel>();
         }
+
 
     }
 }

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Services\Maestro\" />
-    <Folder Include="Services\Inventor\" />
     <Folder Include="Services\Navision\" />
     <Folder Include="Services\Pdf\" />
     <Folder Include="Services\SQlite\" />

@@ -1,4 +1,4 @@
-﻿<Window x:Class="MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor.CargarInventorView"
+﻿<Window x:Class="MiApp.LM.Presentacion.Wpf.Views.Modals.ModalCargaInventor.LoadInvView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,22 +27,30 @@
         </Grid>
         <Grid Grid.Row="1">
             
-            <TabControl BorderBrush="Gainsboro" >
-                
-                <TabItem Header="Instrucciones" >
-                    <local:CargarInventorInstruccionesView />
+            <TabControl BorderBrush="Gainsboro"
+                        SelectedItem="{Binding TabControl.Tab, Mode=TwoWay}" >
+
+                <TabItem Header="Instrucciones" 
+                         TabIndex="0">
+                    <local:LoadInvViewInstruccionesView />
                 </TabItem>
 
-                <TabItem Header="Configurar Columnas">
-                    <local:CargarInventorColumnasView />
+                <TabItem Header="Cargar Excel" 
+                         TabIndex="1"
+                         Visibility="{Binding TabControl.VExcel}">
+                    <local:LoadInvExcelView />
                 </TabItem>
 
-                <TabItem Header="Cargar Excel">
-                    <local:CargarInventorCargaExcelView />
+                <TabItem Header="Configurar Columnas" 
+                         TabIndex="2"
+                         Visibility="{Binding TabControl.VColumnas}">
+                    <local:LoadInvColumnasView />
                 </TabItem>
-                
-                <TabItem Header="Asociar Perfiles">
 
+                <TabItem Header="Asociar Perfiles" 
+                         TabIndex="0"
+                         Visibility="{Binding TabControl.VPerfiles}">
+                    <local:LoadInvPerfilesView />
                 </TabItem>
                 
             </TabControl>

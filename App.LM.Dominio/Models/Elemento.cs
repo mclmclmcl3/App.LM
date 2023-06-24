@@ -15,7 +15,6 @@ namespace MiApp.LM.Dominio.Models
         public string Conjunto { get; set; }
         public string SubConjunto { get; set; }
         public string Comentario { get; set; }
-        public string Estado { get; set; }
         public string ColoBg { get; set; } // Según estado
         public string Fabricante { get; set; } // Después de pedido
         public string Proveedor { get; set; } // Después de pedido
@@ -23,6 +22,12 @@ namespace MiApp.LM.Dominio.Models
 
         // Relacion uno a muchos con Oferta
         public List<Oferta> Ofertas { get; set; }
+
+
+        // Relacion uno a uno con Estado
+        [ForeignKey("Estado")]
+        public int EstadoId { get; set; }
+        public virtual Estado Estado { get; set; }
 
         // Relacion uno a uno con Nodo
         [ForeignKey(nameof(Nodo))]
@@ -40,5 +45,15 @@ namespace MiApp.LM.Dominio.Models
         [ForeignKey(nameof(Pedido))]
         public int PedidoId { get; set; }
         public Pedido Pedido { get; set; }
+
+        // Relacion uno a uno con Tipo
+        [ForeignKey(nameof(Tipo))]
+        public int PTipoId { get; set; }
+        public Tipo Tipo { get; set; }
+
+        // Relacion uno a uno con subTipo
+        [ForeignKey(nameof(SubTipo))]
+        public int SubTipoId { get; set; }
+        public SubTipo SubTipo { get; set; }
     }
 }
